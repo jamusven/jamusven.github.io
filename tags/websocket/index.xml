@@ -13,10 +13,10 @@
     
     <item>
       <title>如何在 OpenResty 中使用 websocket</title>
-      <link>https://hambut.com/2016/10/13/post/</link>
+      <link>https://hambut.com/2016/10/13/how-to-use-websocket-in-openresty/</link>
       <pubDate>Thu, 13 Oct 2016 09:42:21 +0000</pubDate>
       
-      <guid>https://hambut.com/2016/10/13/post/</guid>
+      <guid>https://hambut.com/2016/10/13/how-to-use-websocket-in-openresty/</guid>
       <description>前言 作为一个游戏从业者不可能不使用推方案，以前一直使用 nginx-push-stream-module 这个模块的 Forever Iframe 模式来实现推方案。 最近决定研究下 lua-resty-websocket 来实现一个更加高效好用推方案 不推荐使</description>
     </item>
     

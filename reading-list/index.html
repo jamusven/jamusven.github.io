@@ -93,7 +93,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">hambut</a>
+    <a href="/" class="logo">哈姆巴特 - hambut</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -210,7 +210,7 @@
     <div class="logo-wrapper">
   <a href="/" class="logo">
     
-      hambut
+      哈姆巴特 - hambut
     
   </a>
 </div>
@@ -519,7 +519,27 @@
 
   
 
-  
+  <div class="post bg-white">
+      <div id="comments-gitment"></div>
+      <link rel="stylesheet" href="/lib/gitment/gitment-0.0.3.min.css">
+        <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
+      <script type="text/javascript">
+      const gitment = new Gitment({
+        id: 'reading-list.md',
+        title: 'Reading List',
+        link: decodeURI(location.href),
+        desc: '2018 洛阳女儿行s1 小椴 长安古意 小椴 2018\/8\/31 杯雪·夜雨打金荷 小椴 2018\/8\/29 抑郁症自愈疗法 李增黉 2018\/8\/27 斜杠创业家 [美] 金伯莉·帕尔默 2018\/8\/19 禅与摩托车维修艺术 罗伯特·M·',
+        owner: 'jiamusven',
+        repo: 'jiamusven.github.io',
+        oauth: {
+          client_id: '0bc530a20cff2dbbb30f',
+          client_secret: '85452134e8572026e3fe99a330214a287ecc9f0e'
+        }
+      })
+      gitment.render('comments-gitment')
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+    </div>
 
   
 

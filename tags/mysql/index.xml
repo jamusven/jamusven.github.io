@@ -13,10 +13,10 @@
     
     <item>
       <title>php mysql pconnect</title>
-      <link>https://hambut.com/2013/04/01/post/</link>
+      <link>https://hambut.com/2013/04/01/php-mysql-pconnect/</link>
       <pubDate>Mon, 01 Apr 2013 12:29:39 +0000</pubDate>
       
-      <guid>https://hambut.com/2013/04/01/post/</guid>
+      <guid>https://hambut.com/2013/04/01/php-mysql-pconnect/</guid>
       <description>当 PHP 在 FastCGI 模式下运行时，如果需要使用 pconnect() 连接 MySQL 服务，那么最好设置 PHP FastCGI PHP_FCGI_CHILDREN &amp;lt;&amp;lt; MySQL max_connections，并且加大 php-fpm 的 pm.max_reques</description>
     </item>
     

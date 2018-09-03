@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>php mysql pconnect - 哈姆巴特</title>
+  
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="hambut" />
+  <meta name="description" content="当 PHP 在 FastCGI 模式下运行时，如果需要使用 pconnect() 连接 MySQL 服务，那么最好设置 PHP FastCGI PHP_FCGI_CHILDREN &amp;lt;&amp;lt; MySQL max_connections，并且加大 php-fpm 的 pm.max_reques" />
+
+  <meta name="keywords" content="hambut, openresty, nginx, php, lua, golang, develop, game" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.48" />
+
+
+<link rel="canonical" href="https://hambut.com/2013/04/01/php-mysql-pconnect/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="php mysql pconnect" />
+<meta property="og:description" content="当 PHP 在 FastCGI 模式下运行时，如果需要使用 pconnect() 连接 MySQL 服务，那么最好设置 PHP FastCGI PHP_FCGI_CHILDREN &lt;&lt; MySQL max_connections，并且加大 php-fpm 的 pm.max_reques" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hambut.com/2013/04/01/php-mysql-pconnect/" /><meta property="article:published_time" content="2013-04-01T12:29:39&#43;00:00"/>
+<meta property="article:modified_time" content="2013-04-01T12:29:39&#43;00:00"/>
+<meta itemprop="name" content="php mysql pconnect">
+<meta itemprop="description" content="当 PHP 在 FastCGI 模式下运行时，如果需要使用 pconnect() 连接 MySQL 服务，那么最好设置 PHP FastCGI PHP_FCGI_CHILDREN &lt;&lt; MySQL max_connections，并且加大 php-fpm 的 pm.max_reques">
+
+
+<meta itemprop="datePublished" content="2013-04-01T12:29:39&#43;00:00" />
+<meta itemprop="dateModified" content="2013-04-01T12:29:39&#43;00:00" />
+<meta itemprop="wordCount" content="1770">
+
+
+
+<meta itemprop="keywords" content="mysql,php," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="php mysql pconnect"/>
+<meta name="twitter:description" content="当 PHP 在 FastCGI 模式下运行时，如果需要使用 pconnect() 连接 MySQL 服务，那么最好设置 PHP FastCGI PHP_FCGI_CHILDREN &lt;&lt; MySQL max_connections，并且加大 php-fpm 的 pm.max_reques"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">哈姆巴特 - hambut</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/">Home</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/post/">Archives</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/tags/">Tags</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/categories/">Categories</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/reading-list/">Reading List</a>
+          
+        
+      </li>
+    
+  </ul>
+</nav>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      哈姆巴特 - hambut
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/reading-list/">Reading List</a>
+          
+
+        
+
+      </li>
+    
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">php mysql pconnect</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2013-04-01 </span>
+        <div class="post-category">
+            <a href="https://hambut.com/categories/coding/"> coding </a>
+            
+          </div>
+        <span class="more-meta"> 1770 words </span>
+          <span class="more-meta"> 4 min read </span>
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>当 PHP 在 FastCGI 模式下运行时，如果需要使用 pconnect() 连接 MySQL 服务，那么最好设置 PHP FastCGI PHP_FCGI_CHILDREN &lt;&lt; MySQL max_connections，并且加大 php-fpm 的 pm.max_requests。源于下面的分析……</p>
+
+<p>永久的数据库连接是指在脚本结束运行时不关闭的连接。当收到一个永久连接的请求时。PHP 将检查是否已经存在一个（前面已经开启的）相同的永久连接。如果存在，将直接使用这个连接；如果不存在，则建立一个新的连接。所谓“相同”的连接是指用相同的用户名和密码到相同主机的连接。
+对 web 服务器的工作和分布负载没有完全理解的读者可能会错误地理解永久连接的作用。特别的，永久连接不会在相同的连接上提供建立“用户会话”的能力，也不提供有效建立事务的能力。实际上，从严格意义上来讲，永久连接不会提供任何非永久连接无法提供的特殊功能。</p>
+
+<!-- more -->
+
+<p>为什么？</p>
+
+<p>这和 web 服务器工作的方式有关。web 服务器可以用三种方法来利用 PHP 生成 web 页面。</p>
+
+<p>第一种方法是将 PHP 用作一个“外壳”。以这种方法运行，PHP 会为向 web 服务器提出的每个 PHP 页面请求生成并结束一个 PHP 解释器线程。由于该线程会随每个请求的结束而结束，因此任何在这个线程中利用的任何资源（例如指向 SQL 数据库服务器的连接）都会随线程的结束而关闭。在这种情况下，使用永久连接不会获得任何地改变——因为它们根本不是永久的。</p>
+
+<p>第二，也是最常用的方法，是把 PHP 用作多进程 web 服务器的一个模块，这种方法目前只适用于 Apache。对于一个多进程的服务器，其典型特征是有一个父进程和一组子进程协调运行，其中实际生成 web 页面的是子进程。每当客户端向父进程提出请求时，该请求会被传递给还没有被其它的客户端请求占用的子进程。这也就是说当相同的客户端第二次向服务端提出请求时，它将有可能被一个不同的子进程来处理。在开启了一个永久连接后，所有请求 SQL 服务的后继页面都能够重新使用这个已经建立的 SQL Server 连接。</p>
+
+<p>最后一种方法是将 PHP 用作多线程 web 服务器的一个插件。目前 PHP 4 已经支持 ISAPI、WSAPI 和 NSAPI（在 Windows 环境下），这些使得 PHP 可以被用作诸如 Netscape FastTrack (iPlanet)、Microsoft’s Internet Information Server (IIS) 和 O’Reilly’s WebSite Pro 等多线程 web 服务器的插件。永久连接的行为和前面所描述的多过程模型在本质上是相同的。注意 PHP 3 不支持 SAPI。</p>
+
+<p>如果永久连接并没有任何附加的功能，那么使用它有什么好处？
+答案非常简单——效率。当客户端对 SQL 服务器的连接请求非常频繁时，永久连接将更加高效。连接请求频繁的标准取决于很多因素。例如，数据库的种类，数据库服务和 web 服务是否在同一台服务器上，SQL 服务器如何加载负载等。但我们至少知道，当连接请求很频繁时，永久连接将显著的提高效率。它使得每个子进程在其生命周期中只做一次连接操作，而非每次在处理一个页面时都要向 SQL 服务器提出连接请求。这也就是说，每个子进程将对服务器建立各自独立的永久连接。例如，如果有 20 个不同的子进程运行某脚本建立了永久的 SQL 服务器永久连接，那么实际上向该 SQL 服务器建立了 20 个不同的永久连接，每个进程占有一个。</p>
+
+<p>注意，如果永久连接的子进程数目超过了设定的数据库连接数限制，系统将会产生一些缺陷。如果数据库的同时连接数限制为 16，而在繁忙会话的情况下，有 17 个线程试图连接，那么有一个线程将无法连接。如果这个时候，在脚本中出现了使得连接无法关闭的错误（例如无限循环），则该数据库的 16 个连接将迅速地受到影响。请查阅使用的数据库的文档，以获取关于如何处理已放弃的及闲置的连接的方法。</p>
+
+<p>注意！</p>
+
+<p>在使用永久连接时还有一些特别的问题需要注意。例如在永久连接中使用数据表锁时，如果脚本不管什么原因无法释放该数据表锁，其随后使用相同连接的脚本将会被永久的阻塞，使得需要重新启动 httpd 服务或者数据库服务。另外，在使用事务处理时，如果脚本在事务阻塞产生前结束，则该阻塞也会影响到使用相同连接的下一个脚本。不管在什么情况下，都可以通过使用 register_shutdown_function() 函数来注册一个简单的清理函数来打开数据表锁，或者回滚事务。或者更好的处理方法，是不在使用数据表锁或者事务处理的脚本中使用永久连接，这可以从根本上解决这个问题（当然还可以在其它地方使用永久连接）。</p>
+
+<p>以下是一点重要的总结。永久连接是为通常连接建立一对一的分布而设计的。这意味着必须能够保证在将永久连接替换为非永久连接时，脚本的行为不会改变。使用永久连接将（非常）有可能改变脚本的效率，但不改变其行为！</p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">hambut</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2013-04-01</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://hambut.com/tags/mysql/">mysql</a>
+          <a href="https://hambut.com/tags/php/">php</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2014/03/17/lua-call-user-func-array/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">lua call_user_func_array</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2013/03/07/root-hook-setuid/">
+            <span class="next-text nav-default">获取Root权限的钩子</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+
+  
+  
+
+  
+
+  <div class="post bg-white">
+      <div id="comments-gitment"></div>
+      <link rel="stylesheet" href="/lib/gitment/gitment-0.0.3.min.css">
+        <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
+      <script type="text/javascript">
+      const gitment = new Gitment({
+        id: 'php-mysql-pconnect.md',
+        title: 'php mysql pconnect',
+        link: decodeURI(location.href),
+        desc: '当 PHP 在 FastCGI 模式下运行时，如果需要使用 pconnect() 连接 MySQL 服务，那么最好设置 PHP FastCGI PHP_FCGI_CHILDREN \x26lt;\x26lt; MySQL max_connections，并且加大 php-fpm 的 pm.max_reques',
+        owner: 'jiamusven',
+        repo: 'jiamusven.github.io',
+        oauth: {
+          client_id: '0bc530a20cff2dbbb30f',
+          client_secret: '85452134e8572026e3fe99a330214a287ecc9f0e'
+        }
+      })
+      gitment.render('comments-gitment')
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+    </div>
+
+  
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="https://hambut.com/index.xml" rel="noopener alternate" type="application/rss&#43;xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+  </div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+      2013 -
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">
+        hambut
+        
+      </span></span>
+
+  
+  
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

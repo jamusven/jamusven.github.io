@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>根据源代码生成电子书 - 哈姆巴特</title>
+  
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="hambut" />
+  <meta name="description" content="##前言 最近想要提高自己的编码能力，所以想要找一些优质的项目来学习一下。 最近刚好海淘了最新的 kindle paperwhite 3 所以立马想到了春哥的 code2ebook 在 centos 遇到无数的坑，转" />
+
+  <meta name="keywords" content="hambut, openresty, nginx, php, lua, golang, develop, game" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.48" />
+
+
+<link rel="canonical" href="https://hambut.com/2016/01/26/generate-ebook-from-source-code/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="根据源代码生成电子书" />
+<meta property="og:description" content="##前言 最近想要提高自己的编码能力，所以想要找一些优质的项目来学习一下。 最近刚好海淘了最新的 kindle paperwhite 3 所以立马想到了春哥的 code2ebook 在 centos 遇到无数的坑，转" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hambut.com/2016/01/26/generate-ebook-from-source-code/" /><meta property="article:published_time" content="2016-01-26T10:33:57&#43;00:00"/>
+<meta property="article:modified_time" content="2016-01-26T10:33:57&#43;00:00"/>
+<meta itemprop="name" content="根据源代码生成电子书">
+<meta itemprop="description" content="##前言 最近想要提高自己的编码能力，所以想要找一些优质的项目来学习一下。 最近刚好海淘了最新的 kindle paperwhite 3 所以立马想到了春哥的 code2ebook 在 centos 遇到无数的坑，转">
+
+
+<meta itemprop="datePublished" content="2016-01-26T10:33:57&#43;00:00" />
+<meta itemprop="dateModified" content="2016-01-26T10:33:57&#43;00:00" />
+<meta itemprop="wordCount" content="551">
+
+
+
+<meta itemprop="keywords" content="kindle," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="根据源代码生成电子书"/>
+<meta name="twitter:description" content="##前言 最近想要提高自己的编码能力，所以想要找一些优质的项目来学习一下。 最近刚好海淘了最新的 kindle paperwhite 3 所以立马想到了春哥的 code2ebook 在 centos 遇到无数的坑，转"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">哈姆巴特 - hambut</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/">Home</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/post/">Archives</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/tags/">Tags</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/categories/">Categories</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/reading-list/">Reading List</a>
+          
+        
+      </li>
+    
+  </ul>
+</nav>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      哈姆巴特 - hambut
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/reading-list/">Reading List</a>
+          
+
+        
+
+      </li>
+    
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">根据源代码生成电子书</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2016-01-26 </span>
+        <div class="post-category">
+            <a href="https://hambut.com/categories/coding/"> coding </a>
+            
+          </div>
+        <span class="more-meta"> 551 words </span>
+          <span class="more-meta"> 2 min read </span>
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#安装code2ebook的依赖">安装code2ebook的依赖</a></li>
+</ul></li>
+<li><a href="#根据源代码生成html源文件">根据源代码生成html源文件</a></li>
+<li><a href="#安装calibre">安装Calibre</a></li>
+<li><a href="#转换-html-源文件到-mobi-文件">转换 html 源文件到 mobi 文件</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<p>##前言
+最近想要提高自己的编码能力，所以想要找一些优质的项目来学习一下。</p>
+
+<p>最近刚好海淘了最新的 <code>kindle paperwhite 3</code> 所以立马想到了春哥的 <a href="https://github.com/agentzh/code2ebook" title="code2ebook">code2ebook</a></p>
+
+<p>在 <code>centos</code> 遇到无数的坑，转到 <code>debian</code> 下顺的一B。</p>
+
+<!-- more -->
+
+<p>##准备工作
+###下载code2ebook</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">hambut@debian:~$ git clone https://github.com/agentzh/code2ebook.git
+hambut@debian:~$ <span class="nb">cd</span> code2ebook
+hambut@debian:~$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:<span class="nv">$PATH</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="安装code2ebook的依赖">安装code2ebook的依赖</h3>
+
+<p>我们需要安装 <code>vim</code>、<code>ctags</code>、<code>perl</code> 这三个依赖软件，以 <code>debian</code> 为例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">hambut@debian:~$ sudo apt-get install vim ctags perl</code></pre></td></tr></table>
+</div>
+</div>
+<p>###准备阅读的源代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">hambut@debian:~$ git clone https://github.com/idevz/vanilla.git</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="根据源代码生成html源文件">根据源代码生成html源文件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">hambut@debian:~$ <span class="nb">cd</span> vanilla
+
+hambut@debian:~/Documents/vanilla$ src2html.pl --tab-width <span class="m">4</span> <span class="se">\ </span>
+--color --cross-reference --navigator --line-numbers . <span class="s1">&#39;vanilla-source-code&#39;</span>
+processing <span class="s2">&#34;.&#34;</span> with ctags...
+Wrote html_out/vanilla/v/routes/simple.lua.html
+Wrote html_out/vanilla/v/routes/restful.lua.html
+Wrote html_out/vanilla/v/routes/index.html
+...
+
+Wrote html_out/./index.html
+Finished, total file count: <span class="m">70</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>其实到这步已经可以很方便的通过浏览器等工具看有高亮模式的代码了</p>
+
+<p>但是我们想要通过 <code>kindle</code> 看代码还需要转换成 <code>.mobi</code>、<code>.epub</code> 的格式
+这时我们需要另一个软件 <a href="http://calibre-ebook.com/" title="Calibre">Calibre</a></p>
+
+<h2 id="安装calibre">安装Calibre</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">hambut@debian:~$ sudo apt-get install calibre</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="转换-html-源文件到-mobi-文件">转换 html 源文件到 mobi 文件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">hambut@debian:~/Documents/vanilla$ ebook-convert html_out/index.html vanilla-source-code.mobi <span class="se">\ </span>
+--output-profile kindle_dx --no-inline-toc  --title <span class="s2">&#34;vanilla source code&#34;</span> --publisher <span class="s1">&#39;hambut&#39;</span>
+
+<span class="m">1</span>% Converting input to HTML...
+InputFormatPlugin: HTML Input running
+on /home/hambut/Documents/vanilla/html_out/index.html
+Language not specified
+Creator not specified
+Building file list...
+Normalizing filename cases
+Rewriting HTML links
+Forcing index.html into XHTML namespace
+Forcing index1.html into XHTML namespace
+...
+Forcing index36.html into XHTML namespace
+Forcing index37.html into XHTML namespace
+<span class="m">34</span>% Running transforms on ebook...
+Merging user specified metadata...
+Detecting structure...
+Maximum TOC links reached, stopping.
+Auto generated TOC with <span class="m">50</span> entries.
+Flattening CSS and remapping font sizes...
+Source base font size is <span class="m">12</span>.00000pt
+Removing fake margins...
+Cleaning up manifest...
+Trimming unused files from manifest...
+Creating MOBI Output...
+<span class="m">67</span>% Running MOBI Output plugin
+Serializing resources...
+Creating MOBI <span class="m">6</span> output
+Applying <span class="k">case</span>-transforming CSS...
+Rasterizing SVG images...
+Converting XHTML to Mobipocket markup...
+Serializing markup content...
+  Compressing markup content...
+Generating MOBI index <span class="k">for</span> a book
+MOBI output written to /home/hambut/Documents/vanilla/vanilla-source-code.mobi
+Output saved to   /home/hambut/Documents/vanilla/vanilla-source-code.mobi</code></pre></td></tr></table>
+</div>
+</div>
+<p>剩下来把生成好的 <code>vanilla-source-code.mobi</code> 发送到你的 <code>kindle</code> 就可以了。</p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">hambut</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2016-01-26</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://hambut.com/tags/kindle/">kindle</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2016/03/04/access-internal-network-by-ngrok/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">通过自建ngrok服务访问内网应用</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2015/12/31/openresty-coming/">
+            <span class="next-text nav-default">OpenResty的大时代已经来临</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+
+  
+  
+
+  
+
+  <div class="post bg-white">
+      <div id="comments-gitment"></div>
+      <link rel="stylesheet" href="/lib/gitment/gitment-0.0.3.min.css">
+        <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
+      <script type="text/javascript">
+      const gitment = new Gitment({
+        id: 'generate-ebook-from-source-code.md',
+        title: '根据源代码生成电子书',
+        link: decodeURI(location.href),
+        desc: '##前言 最近想要提高自己的编码能力，所以想要找一些优质的项目来学习一下。 最近刚好海淘了最新的 kindle paperwhite 3 所以立马想到了春哥的 code2ebook 在 centos 遇到无数的坑，转',
+        owner: 'jiamusven',
+        repo: 'jiamusven.github.io',
+        oauth: {
+          client_id: '0bc530a20cff2dbbb30f',
+          client_secret: '85452134e8572026e3fe99a330214a287ecc9f0e'
+        }
+      })
+      gitment.render('comments-gitment')
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+    </div>
+
+  
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="https://hambut.com/index.xml" rel="noopener alternate" type="application/rss&#43;xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+  </div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+      2013 -
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">
+        hambut
+        
+      </span></span>
+
+  
+  
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -13,46 +13,46 @@
     
     <item>
       <title>如何在 OpenResty 中使用 websocket</title>
-      <link>https://hambut.com/2016/10/13/post/</link>
+      <link>https://hambut.com/2016/10/13/how-to-use-websocket-in-openresty/</link>
       <pubDate>Thu, 13 Oct 2016 09:42:21 +0000</pubDate>
       
-      <guid>https://hambut.com/2016/10/13/post/</guid>
+      <guid>https://hambut.com/2016/10/13/how-to-use-websocket-in-openresty/</guid>
       <description>前言 作为一个游戏从业者不可能不使用推方案，以前一直使用 nginx-push-stream-module 这个模块的 Forever Iframe 模式来实现推方案。 最近决定研究下 lua-resty-websocket 来实现一个更加高效好用推方案 不推荐使</description>
     </item>
     
     <item>
       <title>如何在openresty里解析域名</title>
-      <link>https://hambut.com/2016/09/09/post/</link>
+      <link>https://hambut.com/2016/09/09/how-to-resolve-the-domain-name-in-openresty/</link>
       <pubDate>Fri, 09 Sep 2016 12:17:55 +0000</pubDate>
       
-      <guid>https://hambut.com/2016/09/09/post/</guid>
+      <guid>https://hambut.com/2016/09/09/how-to-resolve-the-domain-name-in-openresty/</guid>
       <description>为什么我们的域名不能被解析 最近经常有朋友在使用一个域名地址时发现无法被正确解析 比如在使用Mysql实例时某些云会给一个私有的域名搭配自有的n</description>
     </item>
     
     <item>
       <title>如何在openresty里使用luarocks库</title>
-      <link>https://hambut.com/2016/03/21/post/</link>
+      <link>https://hambut.com/2016/03/21/how-to-use-luarocks-in-openresty/</link>
       <pubDate>Mon, 21 Mar 2016 14:51:55 +0000</pubDate>
       
-      <guid>https://hambut.com/2016/03/21/post/</guid>
+      <guid>https://hambut.com/2016/03/21/how-to-use-luarocks-in-openresty/</guid>
       <description>前言 目前游戏中有一个需要传送大量点数据来表示一个地图的需求 做了简单测试，如果要以文本传送512*512的地图数据大小为20KB左右 我想了一个</description>
     </item>
     
     <item>
       <title>OpenResty的大时代已经来临</title>
-      <link>https://hambut.com/2015/12/31/post/</link>
+      <link>https://hambut.com/2015/12/31/openresty-coming/</link>
       <pubDate>Thu, 31 Dec 2015 16:08:36 +0000</pubDate>
       
-      <guid>https://hambut.com/2015/12/31/post/</guid>
+      <guid>https://hambut.com/2015/12/31/openresty-coming/</guid>
       <description>序言 趁着锤子科技宣布要把门票收入捐给 OpenResty 社区建设的大事件的热潮还在。 我也想写写我和 OpenResty 的前世今生。 2012初识 OpenResty，开发第一个游戏</description>
     </item>
     
     <item>
       <title>lua call_user_func_array</title>
-      <link>https://hambut.com/2014/03/17/post/</link>
+      <link>https://hambut.com/2014/03/17/lua-call-user-func-array/</link>
       <pubDate>Mon, 17 Mar 2014 14:23:01 +0000</pubDate>
       
-      <guid>https://hambut.com/2014/03/17/post/</guid>
+      <guid>https://hambut.com/2014/03/17/lua-call-user-func-array/</guid>
       <description>如何在lua里实现php的call_user_func_array调用 1 2 local args = {...} or {} method(unpack(args, 1, table.maxn(args)))</description>
     </item>
     

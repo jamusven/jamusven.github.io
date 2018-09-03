@@ -13,10 +13,10 @@
     
     <item>
       <title>获取Root权限的钩子</title>
-      <link>https://hambut.com/2013/03/07/post/</link>
+      <link>https://hambut.com/2013/03/07/root-hook-setuid/</link>
       <pubDate>Thu, 07 Mar 2013 12:19:21 +0000</pubDate>
       
-      <guid>https://hambut.com/2013/03/07/post/</guid>
+      <guid>https://hambut.com/2013/03/07/root-hook-setuid/</guid>
       <description>有时候我们维护一些服务需要用到root权限这个时候如果你是非Root该怎么办呢 以前公司的做法是给维护人员开普通用户，个别命令会调用一个钩子拿</description>
     </item>
     
