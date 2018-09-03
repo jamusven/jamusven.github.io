@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>通过自建ngrok服务访问内网应用 - 哈姆巴特</title>
+  
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="hambut" />
+  <meta name="description" content="前言 想在家访问公司的 redmine 等私有服务及自我学习研究 本来 ngrok 自带的就够用了，不过好像最近被河蟹了，索性自己搭一个 要搭建自己的ngrok服务需要一台带" />
+
+  <meta name="keywords" content="hambut, openresty, nginx, php, lua, golang, develop, game" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.48" />
+
+
+<link rel="canonical" href="https://hambut.com/2016/03/04/post/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="通过自建ngrok服务访问内网应用" />
+<meta property="og:description" content="前言 想在家访问公司的 redmine 等私有服务及自我学习研究 本来 ngrok 自带的就够用了，不过好像最近被河蟹了，索性自己搭一个 要搭建自己的ngrok服务需要一台带" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hambut.com/2016/03/04/post/" /><meta property="article:published_time" content="2016-03-04T14:07:18&#43;00:00"/>
+<meta property="article:modified_time" content="2016-03-04T14:07:18&#43;00:00"/>
+<meta itemprop="name" content="通过自建ngrok服务访问内网应用">
+<meta itemprop="description" content="前言 想在家访问公司的 redmine 等私有服务及自我学习研究 本来 ngrok 自带的就够用了，不过好像最近被河蟹了，索性自己搭一个 要搭建自己的ngrok服务需要一台带">
+
+
+<meta itemprop="datePublished" content="2016-03-04T14:07:18&#43;00:00" />
+<meta itemprop="dateModified" content="2016-03-04T14:07:18&#43;00:00" />
+<meta itemprop="wordCount" content="619">
+
+
+
+<meta itemprop="keywords" content="ngrok,forward," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="通过自建ngrok服务访问内网应用"/>
+<meta name="twitter:description" content="前言 想在家访问公司的 redmine 等私有服务及自我学习研究 本来 ngrok 自带的就够用了，不过好像最近被河蟹了，索性自己搭一个 要搭建自己的ngrok服务需要一台带"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">hambut</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/">Home</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/post/">Archives</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/tags/">Tags</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/categories/">Categories</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/reading-list/">Reading List</a>
+          
+        
+      </li>
+    
+  </ul>
+</nav>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      hambut
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/reading-list/">Reading List</a>
+          
+
+        
+
+      </li>
+    
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">通过自建ngrok服务访问内网应用</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2016-03-04 </span>
+        <div class="post-category">
+            <a href="https://hambut.com/categories/coding/"> coding </a>
+            
+          </div>
+        <span class="more-meta"> 619 words </span>
+          <span class="more-meta"> 2 min read </span>
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#下载-编译">下载&amp;编译</a>
+<ul>
+<li><a href="#安装依赖">安装依赖</a></li>
+<li><a href="#下载-ngrok">下载<code>ngrok</code></a></li>
+<li><a href="#根据域名生成自签名">根据域名生成自签名</a></li>
+<li><a href="#会生成6个证书文件">会生成6个证书文件</a></li>
+<li><a href="#替换原始证书">替换原始证书</a></li>
+<li><a href="#修改源代码中库引用的错误">修改源代码中库引用的错误</a></li>
+<li><a href="#开始编译">开始编译</a></li>
+<li><a href="#交叉编译">交叉编译</a></li>
+</ul></li>
+<li><a href="#配置-使用-ngrok">配置&amp;使用 ngrok</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h2 id="前言">前言</h2>
+
+<p>想在家访问公司的 <code>redmine</code> 等私有服务及自我学习研究</p>
+
+<p>本来 <a href="https://ngrok.com/">ngrok</a> 自带的就够用了，不过好像最近被<code>河蟹</code>了，索性自己搭一个</p>
+
+<p>要搭建自己的<code>ngrok</code>服务需要一台带有独立IP的服务器</p>
+
+<!-- more -->
+
+<h2 id="下载-编译">下载&amp;编译</h2>
+
+<ul>
+<li><h3 id="安装依赖">安装依赖</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo yum install golang git golang-pkg-*</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><h3 id="下载-ngrok">下载<code>ngrok</code></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ git clone git@github.com:inconshreveable/ngrok.git
+$ <span class="nb">cd</span> ngrok</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><h3 id="根据域名生成自签名">根据域名生成自签名</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ openssl genrsa -out ngrokroot.key <span class="m">2048</span>
+$ openssl req -new -x509 -nodes -key ngrokroot.key -days <span class="m">10000</span> -subj <span class="s2">&#34;/CN=t.hambut.com&#34;</span> -out ngrokroot.pem
+$ openssl genrsa -out server.key <span class="m">2048</span>
+$ openssl req -new -key server.key -subj <span class="s2">&#34;/CN=t.hambut.com&#34;</span> -out server.csr
+$ openssl x509 -req -in server.csr -CA ngrokroot.pem -CAkey ngrokroot.key -CAcreateserial -days <span class="m">10000</span> -out server.crt</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><h3 id="会生成6个证书文件">会生成6个证书文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ ls ngrokroot.* server.*
+ngrokroot.key  ngrokroot.pem  ngrokroot.srl  server.crt  server.csr  server.key</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><h3 id="替换原始证书">替换原始证书</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ cp ngrokroot.pem assets/client/tls/ngrokroot.crt
+$ cp server.crt assets/server/tls/snakeoil.crt
+$ cp server.key assets/server/tls/snakeoil.key</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><h3 id="修改源代码中库引用的错误">修改源代码中库引用的错误</h3></li>
+</ul>
+
+<p>由于google code的关闭，所以我们要把作者代码中的库引用地址修改一下
+修改 <code>src/ngrok/log/logger.go</code> 文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">log <span class="s2">&#34;code.google.com/p/log4go&#34;</span> 改为 log <span class="s2">&#34;github.com/keepeye/log4go&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li><h3 id="开始编译">开始编译</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo make release-server release-client
+$ ls bin/
+go-bindata  ngrok  ngrokd</code></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><h3 id="交叉编译">交叉编译</h3>
+
+<ul>
+<li>#### windows</li>
+</ul></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> /usr/lib/golang/src/
+$ sudo <span class="nv">GOOS</span><span class="o">=</span>windows <span class="nv">GOARCH</span><span class="o">=</span><span class="m">386</span> <span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">0</span> ./make.bash
+$ <span class="nb">cd</span> -
+$ sudo <span class="nv">GOOS</span><span class="o">=</span>windows <span class="nv">GOARCH</span><span class="o">=</span><span class="m">386</span> make release-client</code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>#### arm</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> /usr/lib/golang/src/
+$ sudo <span class="nv">GOOS</span><span class="o">=</span>linux <span class="nv">GOARCH</span><span class="o">=</span>arm <span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">0</span> ./make.bash
+$ <span class="nb">cd</span> -
+$ sudo <span class="nv">GOOS</span><span class="o">=</span>linux <span class="nv">GOARCH</span><span class="o">=</span>arm make release-client</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="配置-使用-ngrok">配置&amp;使用 ngrok</h2>
+
+<ul>
+<li>### 设置域名解析</li>
+</ul>
+
+<p>把域名的<code>A</code>指向到服务器上，如果需要很多2级域名用<code>*</code> 泛解析到服务器上即可</p>
+
+<p>t -&gt; A ip
+*.t -&gt; A ip</p>
+
+<ul>
+<li>### 启用ngrok 服务端</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> bin
+$ ./ngrokd -domain<span class="o">=</span><span class="s2">&#34;t.hambut.com&#34;</span> -httpAddr<span class="o">=</span><span class="s2">&#34;:8080&#34;</span> -httpsAddr<span class="o">=</span><span class="s2">&#34;:4433&#34;</span> -tunnelAddr<span class="o">=</span><span class="s2">&#34;:4443&#34;</span>
+<span class="o">[</span><span class="m">14</span>:59:42 CST <span class="m">2016</span>/03/04<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">(</span>ngrok/log.<span class="o">(</span>*PrefixLogger<span class="o">)</span>.Info:83<span class="o">)</span> <span class="o">[</span>registry<span class="o">]</span> <span class="o">[</span>tun<span class="o">]</span> No affinity cache specified
+<span class="o">[</span><span class="m">14</span>:59:42 CST <span class="m">2016</span>/03/04<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">(</span>ngrok/log.<span class="o">(</span>*PrefixLogger<span class="o">)</span>.Info:83<span class="o">)</span> <span class="o">[</span>metrics<span class="o">]</span> Reporting every <span class="m">30</span> seconds
+<span class="o">[</span><span class="m">14</span>:59:42 CST <span class="m">2016</span>/03/04<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">(</span>ngrok/log.Info:112<span class="o">)</span> Listening <span class="k">for</span> public http connections on <span class="o">[</span>::<span class="o">]</span>:8080
+<span class="o">[</span><span class="m">14</span>:59:42 CST <span class="m">2016</span>/03/04<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">(</span>ngrok/log.Info:112<span class="o">)</span> Listening <span class="k">for</span> public https connections on <span class="o">[</span>::<span class="o">]</span>:4433
+<span class="o">[</span><span class="m">14</span>:59:42 CST <span class="m">2016</span>/03/04<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">(</span>ngrok/log.Info:112<span class="o">)</span> Listening <span class="k">for</span> control and proxy connections on <span class="o">[</span>::<span class="o">]</span>:4443</code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>### 启用ngrok 客户端</li>
+</ul>
+
+<p>将<code>ngrok</code>文件复制到客户端机器上给执行权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">chmod +x ngrok</code></pre></td></tr></table>
+</div>
+</div>
+<p>创建一个配置文件 config.yml，编辑以下内容并保存</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">server_addr: t.hambut.com:4443
+trust_host_root_certs: false</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ ./ngrok -config<span class="o">=</span>debug.yml <span class="m">80</span>
+
+ngrok                                                                                                                                                                                                                       <span class="o">(</span>Ctrl+C to quit<span class="o">)</span>
+                                                                                                                                                                                                                                            
+Tunnel Status                 online                                                                                                                                                                                                        
+Version                       <span class="m">1</span>.7/1.7                                                                                                                                                                                                       
+Forwarding                    http://1e5c41a4.t.hambut.com:8080 -&gt; <span class="m">127</span>.0.0.1:80                                                                                                                                                             
+Forwarding                    https://1e5c41a4.t.hambut.com:8080 -&gt; <span class="m">127</span>.0.0.1:80                                                                                                                                                            
+Web Interface                 <span class="m">127</span>.0.0.1:4040                                                                                                                                                                                                
+<span class="c1"># Conn                        3                                                                                                                                                                                                             
+</span><span class="c1"></span>Avg Conn Time                 <span class="m">7</span>.42ms </code></pre></td></tr></table>
+</div>
+</div>
+<p>文献参考：</p>
+
+<p><a href="https://github.com/inconshreveable/ngrok/blob/master/docs/SELFHOSTING.md">https://github.com/inconshreveable/ngrok/blob/master/docs/SELFHOSTING.md</a>
+<a href="http://www.tahoroom.com/archives/11329.html">http://www.tahoroom.com/archives/11329.html</a></p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">hambut</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2016-03-04</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://hambut.com/tags/ngrok/">ngrok</a>
+          <a href="https://hambut.com/tags/forward/">forward</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2016/03/21/post/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">如何在openresty里使用luarocks库</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2016/01/26/post/">
+            <span class="next-text nav-default">根据源代码生成电子书</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="https://hambut.com/index.xml" rel="noopener alternate" type="application/rss&#43;xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+  </div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+      2013 -
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">
+        hambut
+        
+      </span></span>
+
+  
+  
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

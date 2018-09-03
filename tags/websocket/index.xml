@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Websocket on 哈姆巴特</title>
+    <link>https://hambut.com/tags/websocket/</link>
+    <description>Recent content in Websocket on 哈姆巴特</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 13 Oct 2016 09:42:21 +0000</lastBuildDate>
+    
+	<atom:link href="https://hambut.com/tags/websocket/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>如何在 OpenResty 中使用 websocket</title>
+      <link>https://hambut.com/2016/10/13/post/</link>
+      <pubDate>Thu, 13 Oct 2016 09:42:21 +0000</pubDate>
+      
+      <guid>https://hambut.com/2016/10/13/post/</guid>
+      <description>前言 作为一个游戏从业者不可能不使用推方案，以前一直使用 nginx-push-stream-module 这个模块的 Forever Iframe 模式来实现推方案。 最近决定研究下 lua-resty-websocket 来实现一个更加高效好用推方案 不推荐使</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golang on 哈姆巴特</title>
+    <link>https://hambut.com/tags/golang/</link>
+    <description>Recent content in Golang on 哈姆巴特</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 29 Dec 2012 11:51:19 +0000</lastBuildDate>
+    
+	<atom:link href="https://hambut.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>golang实现的udpserver防沉迷服务</title>
+      <link>https://hambut.com/2012/12/29/post/</link>
+      <pubDate>Sat, 29 Dec 2012 11:51:19 +0000</pubDate>
+      
+      <guid>https://hambut.com/2012/12/29/post/</guid>
+      <description>公司要做防沉迷，需要游戏端及时向中心服通知在线时长 如果游戏逻辑中用curl请求我比较担心请求太慢，导致游戏逻辑本身处理速度变慢 所以最后考虑了</description>
+    </item>
+    
+  </channel>
+</rss>

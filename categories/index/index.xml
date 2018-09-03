@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Index on 哈姆巴特</title>
+    <link>https://hambut.com/categories/index/</link>
+    <description>Recent content in Index on 哈姆巴特</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 15 Jan 2016 16:03:51 +0800</lastBuildDate>
+    
+	<atom:link href="https://hambut.com/categories/index/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Reading List</title>
+      <link>https://hambut.com/reading-list/</link>
+      <pubDate>Fri, 15 Jan 2016 16:03:51 +0800</pubDate>
+      
+      <guid>https://hambut.com/reading-list/</guid>
+      <description>2018 洛阳女儿行s1 小椴 长安古意 小椴 2018/8/31 杯雪·夜雨打金荷 小椴 2018/8/29 抑郁症自愈疗法 李增黉 2018/8/27 斜杠创业家 [美] 金伯莉·帕尔默 2018/8/19 禅与摩托车维修艺术 罗伯特·M·</description>
+    </item>
+    
+  </channel>
+</rss>

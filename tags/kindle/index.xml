@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kindle on 哈姆巴特</title>
+    <link>https://hambut.com/tags/kindle/</link>
+    <description>Recent content in Kindle on 哈姆巴特</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 26 Jan 2016 10:33:57 +0000</lastBuildDate>
+    
+	<atom:link href="https://hambut.com/tags/kindle/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>根据源代码生成电子书</title>
+      <link>https://hambut.com/2016/01/26/post/</link>
+      <pubDate>Tue, 26 Jan 2016 10:33:57 +0000</pubDate>
+      
+      <guid>https://hambut.com/2016/01/26/post/</guid>
+      <description>##前言 最近想要提高自己的编码能力，所以想要找一些优质的项目来学习一下。 最近刚好海淘了最新的 kindle paperwhite 3 所以立马想到了春哥的 code2ebook 在 centos 遇到无数的坑，转</description>
+    </item>
+    
+  </channel>
+</rss>

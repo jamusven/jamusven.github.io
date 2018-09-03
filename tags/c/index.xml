@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on 哈姆巴特</title>
+    <link>https://hambut.com/tags/c/</link>
+    <description>Recent content in C on 哈姆巴特</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 07 Mar 2013 12:19:21 +0000</lastBuildDate>
+    
+	<atom:link href="https://hambut.com/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>获取Root权限的钩子</title>
+      <link>https://hambut.com/2013/03/07/post/</link>
+      <pubDate>Thu, 07 Mar 2013 12:19:21 +0000</pubDate>
+      
+      <guid>https://hambut.com/2013/03/07/post/</guid>
+      <description>有时候我们维护一些服务需要用到root权限这个时候如果你是非Root该怎么办呢 以前公司的做法是给维护人员开普通用户，个别命令会调用一个钩子拿</description>
+    </item>
+    
+  </channel>
+</rss>

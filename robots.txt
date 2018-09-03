@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://hambut.com/sitemap.xml

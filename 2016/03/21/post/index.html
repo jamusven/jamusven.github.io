@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>如何在openresty里使用luarocks库 - 哈姆巴特</title>
+  
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="hambut" />
+  <meta name="description" content="前言 目前游戏中有一个需要传送大量点数据来表示一个地图的需求 做了简单测试，如果要以文本传送512*512的地图数据大小为20KB左右 我想了一个" />
+
+  <meta name="keywords" content="hambut, openresty, nginx, php, lua, golang, develop, game" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.48" />
+
+
+<link rel="canonical" href="https://hambut.com/2016/03/21/post/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="如何在openresty里使用luarocks库" />
+<meta property="og:description" content="前言 目前游戏中有一个需要传送大量点数据来表示一个地图的需求 做了简单测试，如果要以文本传送512*512的地图数据大小为20KB左右 我想了一个" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hambut.com/2016/03/21/post/" /><meta property="article:published_time" content="2016-03-21T14:51:55&#43;00:00"/>
+<meta property="article:modified_time" content="2016-03-21T14:51:55&#43;00:00"/>
+<meta itemprop="name" content="如何在openresty里使用luarocks库">
+<meta itemprop="description" content="前言 目前游戏中有一个需要传送大量点数据来表示一个地图的需求 做了简单测试，如果要以文本传送512*512的地图数据大小为20KB左右 我想了一个">
+
+
+<meta itemprop="datePublished" content="2016-03-21T14:51:55&#43;00:00" />
+<meta itemprop="dateModified" content="2016-03-21T14:51:55&#43;00:00" />
+<meta itemprop="wordCount" content="472">
+
+
+
+<meta itemprop="keywords" content="openresty,lua," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何在openresty里使用luarocks库"/>
+<meta name="twitter:description" content="前言 目前游戏中有一个需要传送大量点数据来表示一个地图的需求 做了简单测试，如果要以文本传送512*512的地图数据大小为20KB左右 我想了一个"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">hambut</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/">Home</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/post/">Archives</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/tags/">Tags</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/categories/">Categories</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/reading-list/">Reading List</a>
+          
+        
+      </li>
+    
+  </ul>
+</nav>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      hambut
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://hambut.com/reading-list/">Reading List</a>
+          
+
+        
+
+      </li>
+    
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">如何在openresty里使用luarocks库</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2016-03-21 </span>
+        <div class="post-category">
+            <a href="https://hambut.com/categories/coding/"> coding </a>
+            
+          </div>
+        <span class="more-meta"> 472 words </span>
+          <span class="more-meta"> 1 min read </span>
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#安装luarocks">安装luarocks</a></li>
+<li><a href="#安装imagemagick库">安装ImageMagick库</a></li>
+<li><a href="#gg">GG</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h3 id="前言">前言</h3>
+
+<p>目前游戏中有一个需要传送大量点数据来表示一个地图的需求</p>
+
+<p>做了简单测试，如果要以文本传送512*512的地图数据大小为20KB左右</p>
+
+<p>我想了一个办法把数据写到图片的一个像素中，以不同的颜色来代表类型和地形</p>
+
+<p>然后通过base64同样尺寸的jpeg图片，在100%质量的情况下只有8kb的大小</p>
+
+<!-- more -->
+
+<h3 id="安装luarocks">安装luarocks</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ wget https://keplerproject.github.io/luarocks/releases/luarocks-2.2.2.tar.gz
+$ tar zxf luarocks-2.2.2.tar.gz
+$ <span class="nb">cd</span> luarocks-2.2.2
+$ ./configure --prefix<span class="o">=</span>/data/soft/openresty/luajit <span class="se">\ </span>
+--with-lua<span class="o">=</span>/data/soft/openresty/luajit/ <span class="se">\
+</span><span class="se"></span>--lua-suffix<span class="o">=</span>jit-2.1.0-alpha <span class="se">\
+</span><span class="se"></span>--with-lua-include<span class="o">=</span>/data/soft/openresty/luajit/include/luajit-2.1
+$ make build
+$ make install</code></pre></td></tr></table>
+</div>
+</div>
+<p>See：<a href="http://openresty.org/en/using-luarocks.html">http://openresty.org/en/using-luarocks.html</a></p>
+
+<h3 id="安装imagemagick库">安装ImageMagick库</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ yum install ImageMagick-devel
+$ /data/soft/openresty/luajit/bin/luarocks install magick</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="gg">GG</h3>
+
+<p>这个把数据压缩成图的方法最终还是流产了</p>
+
+<p>因为lua对图形的操作太弱了，没有合适的库，我尝试对magick库增加new image和set pixel的方法</p>
+
+<p>中途遇到了各种诡异的问题，而且生成图的效率有点低下</p>
+
+<p>部分代码片段</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="o">#</span> <span class="kr">in</span> <span class="n">lib.lua</span>
+<span class="n">MagickBooleanType</span> <span class="n">MagickNewImage</span><span class="p">(</span><span class="n">MagickWand</span><span class="o">*</span><span class="p">,</span>  <span class="n">const</span> <span class="n">size_t</span><span class="o">*</span><span class="p">,</span> <span class="n">const</span> <span class="n">size_t</span><span class="o">*</span><span class="p">,</span> <span class="n">const</span> <span class="n">PixelWand</span><span class="o">*</span><span class="p">);</span>
+
+<span class="o">#</span> <span class="kr">in</span> <span class="n">lib.moon</span>
+<span class="n">MagickBooleanType</span> <span class="n">MagickNewImage</span><span class="p">(</span><span class="n">MagickWand</span><span class="o">*</span><span class="p">,</span>  <span class="n">const</span> <span class="n">size_t</span><span class="o">*</span><span class="p">,</span> <span class="n">const</span> <span class="n">size_t</span><span class="o">*</span><span class="p">,</span> <span class="n">const</span> <span class="n">PixelWand</span><span class="o">*</span><span class="p">);</span>
+
+
+<span class="o">#</span> <span class="kr">in</span> <span class="n">init.lua</span>
+
+<span class="kd">local</span> <span class="n">new_image</span>
+<span class="n">new_image</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">rgb</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">wand</span> <span class="o">=</span> <span class="n">ffi.gc</span><span class="p">(</span><span class="n">lib.NewMagickWand</span><span class="p">(),</span> <span class="n">lib.DestroyMagickWand</span><span class="p">)</span>
+
+    <span class="kd">local</span> <span class="n">pixel</span> <span class="o">=</span> <span class="n">ffi.gc</span><span class="p">(</span><span class="n">lib.NewPixelWand</span><span class="p">(),</span> <span class="n">lib.DestroyPixelWand</span><span class="p">)</span>
+    <span class="n">lib.PixelSetRed</span><span class="p">(</span><span class="n">pixel</span><span class="p">,</span> <span class="n">rgb.r</span><span class="p">)</span>
+    <span class="n">lib.PixelSetGreen</span><span class="p">(</span><span class="n">pixel</span><span class="p">,</span> <span class="n">rgb.g</span><span class="p">)</span>
+    <span class="n">lib.PixelSetBlue</span><span class="p">(</span><span class="n">pixel</span><span class="p">,</span> <span class="n">rgb.b</span><span class="p">)</span>
+
+    <span class="kr">if</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">lib.MagickNewImage</span><span class="p">(</span><span class="n">wand</span><span class="p">,</span> <span class="n">ffi.new</span><span class="p">(</span><span class="s2">&#34;size_t[?]&#34;</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span>  <span class="n">ffi.new</span><span class="p">(</span><span class="s2">&#34;size_t[?]&#34;</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="n">pixel</span><span class="p">)</span> <span class="kr">then</span>
+        <span class="kd">local</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">get_exception</span><span class="p">(</span><span class="n">wand</span><span class="p">)</span>
+
+        <span class="n">ngx.say</span><span class="p">(</span><span class="s2">&#34;code&#34;</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="s2">&#34;msgs&#34;</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+
+        <span class="kr">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">code</span>
+    <span class="kr">end</span>
+
+    <span class="n">ngx.say</span><span class="p">(</span><span class="s2">&#34;ok&#34;</span><span class="p">)</span>
+
+    <span class="kr">return</span> <span class="n">Image</span><span class="p">(</span><span class="n">wand</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="kr">end</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>See:
+<a href="http://www.imagemagick.org/api/magick-image.php#MagickNewImage">http://www.imagemagick.org/api/magick-image.php#MagickNewImage</a>
+<a href="https://github.com/leafo/magick">https://github.com/leafo/magick</a></p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">hambut</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2016-03-21</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://hambut.com/tags/openresty/">openresty</a>
+          <a href="https://hambut.com/tags/lua/">lua</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/2016/09/09/post/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">如何在openresty里解析域名</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/2016/03/04/post/">
+            <span class="next-text nav-default">通过自建ngrok服务访问内网应用</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="https://hambut.com/index.xml" rel="noopener alternate" type="application/rss&#43;xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+  </div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+      2013 -
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">
+        hambut
+        
+      </span></span>
+
+  
+  
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

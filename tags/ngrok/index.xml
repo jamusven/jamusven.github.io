@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ngrok on 哈姆巴特</title>
+    <link>https://hambut.com/tags/ngrok/</link>
+    <description>Recent content in Ngrok on 哈姆巴特</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 04 Mar 2016 14:07:18 +0000</lastBuildDate>
+    
+	<atom:link href="https://hambut.com/tags/ngrok/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>通过自建ngrok服务访问内网应用</title>
+      <link>https://hambut.com/2016/03/04/post/</link>
+      <pubDate>Fri, 04 Mar 2016 14:07:18 +0000</pubDate>
+      
+      <guid>https://hambut.com/2016/03/04/post/</guid>
+      <description>前言 想在家访问公司的 redmine 等私有服务及自我学习研究 本来 ngrok 自带的就够用了，不过好像最近被河蟹了，索性自己搭一个 要搭建自己的ngrok服务需要一台带</description>
+    </item>
+    
+  </channel>
+</rss>
