@@ -27,14 +27,14 @@
 <meta name="author" content="hambut" />
   <meta name="description" content="事情的起因 同事告诉我我们线上一组游戏服进不去了，我查了一下错误日志，看到 Redis 服务报了以下错误 1 2 MISCONF Redis is configured to save RDB snapshots, but is currently not able to persist on disk. Commands that may modify the data" />
 
-  <meta name="keywords" content="hambut, openresty, nginx, php, lua, golang, develop, game" />
+  <meta name="keywords" content="哈姆巴特, hambut, openresty, nginx, php, lua, golang, develop, game" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.48" />
+<meta name="generator" content="Hugo 0.53" />
 
 
 <link rel="canonical" href="https://hambut.com/2015/12/22/crontab-sendmail-postdrop-system-crash/" />
@@ -62,6 +62,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hambut.com/2015/12/22/crontab-sendmail-postdrop-system-crash/" /><meta property="article:published_time" content="2015-12-22T11:28:47&#43;00:00"/>
 <meta property="article:modified_time" content="2015-12-22T11:28:47&#43;00:00"/>
+
 <meta itemprop="name" content="cron触发sendmail&amp;postdrop之后引发系统资源枯竭">
 <meta itemprop="description" content="事情的起因 同事告诉我我们线上一组游戏服进不去了，我查了一下错误日志，看到 Redis 服务报了以下错误 1 2 MISCONF Redis is configured to save RDB snapshots, but is currently not able to persist on disk. Commands that may modify the data">
 
@@ -342,14 +343,14 @@ Commands that may modify the data set are disabled. Please check Redis logs for 
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ t2<span class="o">]</span><span class="c1"># tail /data/data/t2/run.log 
-</span><span class="c1"></span><span class="o">[</span><span class="m">18727</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:12.193 <span class="c1"># Background saving error
-</span><span class="c1"></span><span class="o">[</span><span class="m">22817</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:18.016 <span class="c1"># Failed opening .rdb for saving: No space left on device
-</span><span class="c1"></span><span class="o">[</span><span class="m">18727</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:18.107 <span class="c1"># Background saving error
-</span><span class="c1"></span><span class="o">[</span><span class="m">22823</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:24.029 <span class="c1"># Failed opening .rdb for saving: No space left on device
-</span><span class="c1"></span><span class="o">[</span><span class="m">18727</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:24.121 <span class="c1"># Background saving error
-</span><span class="c1"></span><span class="o">[</span><span class="m">22828</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:30.047 <span class="c1"># Failed opening .rdb for saving: No space left on device
-</span><span class="c1"></span><span class="o">[</span><span class="m">18727</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:30.134 # Background saving error</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ t2<span class="o">]</span><span class="c1"># tail /data/data/t2/run.log</span> 
+<span class="o">[</span><span class="m">18727</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:12.193 <span class="c1"># Background saving error</span>
+<span class="o">[</span><span class="m">22817</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:18.016 <span class="c1"># Failed opening .rdb for saving: No space left on device</span>
+<span class="o">[</span><span class="m">18727</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:18.107 <span class="c1"># Background saving error</span>
+<span class="o">[</span><span class="m">22823</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:24.029 <span class="c1"># Failed opening .rdb for saving: No space left on device</span>
+<span class="o">[</span><span class="m">18727</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:24.121 <span class="c1"># Background saving error</span>
+<span class="o">[</span><span class="m">22828</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:30.047 <span class="c1"># Failed opening .rdb for saving: No space left on device</span>
+<span class="o">[</span><span class="m">18727</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:30.134 <span class="c1"># Background saving error</span></code></pre></td></tr></table>
 </div>
 </div>
 <!-- more -->
@@ -370,8 +371,8 @@ Commands that may modify the data set are disabled. Please check Redis logs for 
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ t2<span class="o">]</span><span class="c1"># sh /data/www/t2/tools/loginRedis.sh 
-</span><span class="c1"></span><span class="m">127</span>.0.0.1:8201&gt; config get dir
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ t2<span class="o">]</span><span class="c1"># sh /data/www/t2/tools/loginRedis.sh</span> 
+<span class="m">127</span>.0.0.1:8201&gt; config get dir
 <span class="m">1</span><span class="o">)</span> <span class="s2">&#34;dir&#34;</span>
 <span class="m">2</span><span class="o">)</span> <span class="s2">&#34;/data/data/t2&#34;</span>
 <span class="m">127</span>.0.0.1:8201&gt; config get dbfilename
@@ -405,8 +406,8 @@ OK
 Background saving started
 
 tail /data/data/t2/run.log 
-<span class="o">[</span><span class="m">22833</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:36.057 <span class="c1"># Failed opening .rdb for saving: No space left on device
-</span><span class="c1"></span><span class="o">[</span><span class="m">18727</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:36.148 # Background saving error</code></pre></td></tr></table>
+<span class="o">[</span><span class="m">22833</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:36.057 <span class="c1"># Failed opening .rdb for saving: No space left on device</span>
+<span class="o">[</span><span class="m">18727</span><span class="o">]</span> <span class="m">22</span> Dec <span class="m">11</span>:22:36.148 <span class="c1"># Background saving error</span></code></pre></td></tr></table>
 </div>
 </div>
 <p>结果很不理解依然报错。。</p>
@@ -434,8 +435,8 @@ tail /data/data/t2/run.log
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ t2<span class="o">]</span><span class="c1"># ps afx
-</span><span class="c1"></span><span class="m">21326</span> ?        S      <span class="m">0</span>:00  <span class="se">\_</span> CROND
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ t2<span class="o">]</span><span class="c1"># ps afx</span>
+<span class="m">21326</span> ?        S      <span class="m">0</span>:00  <span class="se">\_</span> CROND
 <span class="m">21370</span> ?        S      <span class="m">0</span>:00  <span class="p">|</span>   <span class="se">\_</span> /usr/sbin/sendmail -FCronDaemon -i -odi -oem -oi -t -f root
 <span class="m">21373</span> ?        S      <span class="m">0</span>:00  <span class="p">|</span>       <span class="se">\_</span> /usr/sbin/postdrop -r
 <span class="m">21327</span> ?        S      <span class="m">0</span>:00  <span class="se">\_</span> CROND
@@ -466,8 +467,8 @@ tail /data/data/t2/run.log
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ postfix<span class="o">]</span><span class="c1"># tail /var/log/maillog
-</span><span class="c1"></span>Dec <span class="m">22</span> <span class="m">11</span>:22:33 iZ232dbhg3uZ postfix/postdrop<span class="o">[</span><span class="m">18902</span><span class="o">]</span>: warning: mail_queue_enter: create file maildrop/712248.18902: No space left on device
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ postfix<span class="o">]</span><span class="c1"># tail /var/log/maillog</span>
+Dec <span class="m">22</span> <span class="m">11</span>:22:33 iZ232dbhg3uZ postfix/postdrop<span class="o">[</span><span class="m">18902</span><span class="o">]</span>: warning: mail_queue_enter: create file maildrop/712248.18902: No space left on device
 Dec <span class="m">22</span> <span class="m">11</span>:22:33 iZ232dbhg3uZ postfix/postdrop<span class="o">[</span><span class="m">18900</span><span class="o">]</span>: warning: mail_queue_enter: create file maildrop/740438.18900: No space left on device
 Dec <span class="m">22</span> <span class="m">11</span>:22:33 iZ232dbhg3uZ postfix/postdrop<span class="o">[</span><span class="m">18898</span><span class="o">]</span>: warning: mail_queue_enter: create file maildrop/772643.18898: No space left on device
 Dec <span class="m">22</span> <span class="m">11</span>:22:33 iZ232dbhg3uZ postfix/postdrop<span class="o">[</span><span class="m">18669</span><span class="o">]</span>: warning: mail_queue_enter: create file maildrop/788042.18669: No space left on device
@@ -484,8 +485,8 @@ Dec <span class="m">22</span> <span class="m">11</span>:22:33 iZ232dbhg3uZ postf
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ t2<span class="o">]</span><span class="c1"># ls -l /var/spool/postfix/maildrop/ | wc -l
-</span><span class="c1"></span><span class="m">1139685</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ t2<span class="o">]</span><span class="c1"># ls -l /var/spool/postfix/maildrop/ | wc -l</span>
+<span class="m">1139685</span></code></pre></td></tr></table>
 </div>
 </div>
 <p>shit 居然这么多，赶紧干掉。</p>
@@ -495,8 +496,8 @@ Dec <span class="m">22</span> <span class="m">11</span>:22:33 iZ232dbhg3uZ postf
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ t2<span class="o">]</span><span class="c1"># rm -rf /var/spool/postfix/maildrop/*
-</span><span class="c1"></span>-bash: /bin/rm: Argument list too long</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ t2<span class="o">]</span><span class="c1"># rm -rf /var/spool/postfix/maildrop/*</span>
+-bash: /bin/rm: Argument list too long</code></pre></td></tr></table>
 </div>
 </div>
 <p>由于文件太多居然无法删除。。。1234换个姿势再来一次。。</p>
@@ -506,8 +507,8 @@ Dec <span class="m">22</span> <span class="m">11</span>:22:33 iZ232dbhg3uZ postf
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ postfix<span class="o">]</span><span class="c1"># rm -rf maildrop
-</span><span class="c1"></span>rm: cannot remove <span class="sb">`</span>maildrop<span class="err">&#39;</span>: Directory not empty</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ postfix<span class="o">]</span><span class="c1"># rm -rf maildrop</span>
+rm: cannot remove <span class="sb">`</span>maildrop<span class="err">&#39;</span>: Directory not empty</code></pre></td></tr></table>
 </div>
 </div>
 <p>这里我没有想明白为什么我带了 -rf 依然删不掉这个目录，不过没关系，1234换个姿势再来一次。。</p>
@@ -516,7 +517,7 @@ Dec <span class="m">22</span> <span class="m">11</span>:22:33 iZ232dbhg3uZ postf
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ postfix<span class="o">]</span># find ./maildrop -type f <span class="p">|</span> xargs rm</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ postfix<span class="o">]</span><span class="c1"># find ./maildrop -type f | xargs rm</span></code></pre></td></tr></table>
 </div>
 </div>
 <p>终于把所有的文件都清理干净了，再 kill 掉 sendmail 和 postdrop 进程</p>
@@ -542,8 +543,8 @@ killall -9 postdrop</code></pre></td></tr></table>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ maildrop<span class="o">]</span><span class="c1"># grep -inR &#34;MAILTO&#34; /etc/cron*
-</span><span class="c1"></span>/etc/cron.d/0hourly:3:MAILTO<span class="o">=</span>root
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ maildrop<span class="o">]</span><span class="c1"># grep -inR &#34;MAILTO&#34; /etc/cron*</span>
+/etc/cron.d/0hourly:3:MAILTO<span class="o">=</span>root
 /etc/crontab:3:MAILTO<span class="o">=</span>root</code></pre></td></tr></table>
 </div>
 </div>
@@ -555,8 +556,8 @@ killall -9 postdrop</code></pre></td></tr></table>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ maildrop<span class="o">]</span><span class="c1"># service crond restart
-</span><span class="c1"></span>Stopping crond:                                            <span class="o">[</span>  OK  <span class="o">]</span>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@iZ232dbhg3uZ maildrop<span class="o">]</span><span class="c1"># service crond restart</span>
+Stopping crond:                                            <span class="o">[</span>  OK  <span class="o">]</span>
 Starting crond:                                              <span class="o">[</span>  OK  <span class="o">]</span></code></pre></td></tr></table>
 </div>
 </div>
@@ -675,8 +676,8 @@ Starting crond:                                              <span class="o">[</
   <span class="copyright-year">
     &copy;
     
-      2013 -
-    2018
+      2014 -
+    2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span><span class="author">
