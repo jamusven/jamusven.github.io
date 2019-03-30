@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hambut.com/2019/03/27/take-whatever-you-want/</loc>
+    <lastmod>2019-03-27T23:11:21+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://hambut.com/2016/10/13/how-to-use-websocket-in-openresty/</loc>
     <lastmod>2016-10-13T09:42:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -114,6 +121,13 @@
   </url>
   
   <url>
+    <loc>https://hambut.com/tags/emotion/</loc>
+    <lastmod>2019-03-27T23:11:21+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://hambut.com/tags/forward/</loc>
     <lastmod>2016-03-04T14:07:18+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -142,8 +156,22 @@
   </url>
   
   <url>
+    <loc>https://hambut.com/categories/life/</loc>
+    <lastmod>2019-03-27T23:11:21+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://hambut.com/tags/linux/</loc>
     <lastmod>2015-12-22T11:28:47+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hambut.com/tags/love/</loc>
+    <lastmod>2019-03-27T23:11:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -185,7 +213,7 @@
   
   <url>
     <loc>https://hambut.com/post/</loc>
-    <lastmod>2016-10-13T09:42:21+00:00</lastmod>
+    <lastmod>2019-03-27T23:11:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -227,7 +255,7 @@
   
   <url>
     <loc>https://hambut.com/</loc>
-    <lastmod>2016-10-13T09:42:21+00:00</lastmod>
+    <lastmod>2019-03-27T23:11:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
