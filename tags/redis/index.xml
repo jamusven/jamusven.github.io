@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Redis on 哈姆巴特</title>
+    <title>redis on 哈姆巴特</title>
     <link>https://hambut.com/tags/redis/</link>
-    <description>Recent content in Redis on 哈姆巴特</description>
+    <description>Recent content in redis on 哈姆巴特</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 22 Dec 2015 11:28:47 +0000</lastBuildDate>

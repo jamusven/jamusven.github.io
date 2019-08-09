@@ -6,12 +6,22 @@
     <description>Recent content in Categories on 哈姆巴特</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <lastBuildDate>Wed, 27 Mar 2019 23:11:21 +0000</lastBuildDate>
     
 	<atom:link href="https://hambut.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Coding</title>
+      <title>life</title>
+      <link>https://hambut.com/categories/life/</link>
+      <pubDate>Wed, 27 Mar 2019 23:11:21 +0000</pubDate>
+      
+      <guid>https://hambut.com/categories/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>coding</title>
       <link>https://hambut.com/categories/coding/</link>
       <pubDate>Thu, 13 Oct 2016 09:42:21 +0000</pubDate>
       
@@ -20,20 +30,11 @@
     </item>
     
     <item>
-      <title>Index</title>
+      <title>index</title>
       <link>https://hambut.com/categories/index/</link>
       <pubDate>Fri, 15 Jan 2016 16:03:51 +0800</pubDate>
       
       <guid>https://hambut.com/categories/index/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Life</title>
-      <link>https://hambut.com/categories/life/</link>
-      <pubDate>Wed, 27 Mar 2019 23:11:21 +0000</pubDate>
-      
-      <guid>https://hambut.com/categories/life/</guid>
       <description></description>
     </item>
     
