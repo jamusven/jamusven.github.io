@@ -2,39 +2,59 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hambut.com/post/</loc>
+    <lastmod>2019-08-28T11:53:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hambut.com/2019/08/28/the-dream-of-ti9-had-broken-at-shanghai/</loc>
+    <lastmod>2019-08-28T11:53:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hambut.com/</loc>
+    <lastmod>2019-08-28T11:53:28+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://hambut.com/categories/</loc>
     <lastmod>2019-03-27T23:11:21+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://hambut.com/post/</loc>
-    <lastmod>2019-03-27T23:11:21+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://hambut.com/tags/</loc>
-    <lastmod>2019-03-27T23:11:21+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/tags/emotion/</loc>
     <lastmod>2019-03-27T23:11:21+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/categories/life/</loc>
     <lastmod>2019-03-27T23:11:21+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/tags/love/</loc>
     <lastmod>2019-03-27T23:11:21+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hambut.com/tags/</loc>
+    <lastmod>2019-03-27T23:11:21+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -45,33 +65,31 @@
   </url>
   
   <url>
-    <loc>https://hambut.com/</loc>
-    <lastmod>2019-03-27T23:11:21+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://hambut.com/categories/coding/</loc>
     <lastmod>2016-10-13T09:42:21+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/tags/lua/</loc>
     <lastmod>2016-10-13T09:42:21+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/tags/openresty/</loc>
     <lastmod>2016-10-13T09:42:21+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/tags/websocket/</loc>
     <lastmod>2016-10-13T09:42:21+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -98,13 +116,15 @@
   <url>
     <loc>https://hambut.com/tags/forward/</loc>
     <lastmod>2016-03-04T14:07:18+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/tags/ngrok/</loc>
     <lastmod>2016-03-04T14:07:18+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -117,7 +137,8 @@
   <url>
     <loc>https://hambut.com/tags/kindle/</loc>
     <lastmod>2016-01-26T10:33:57+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -128,22 +149,24 @@
   </url>
   
   <url>
-    <loc>https://hambut.com/reading-list/</loc>
+    <loc>https://hambut.com/categories/index/</loc>
     <lastmod>2016-01-15T16:03:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://hambut.com/categories/index/</loc>
+    <loc>https://hambut.com/tags/reading/</loc>
     <lastmod>2016-01-15T16:03:51+08:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://hambut.com/tags/reading/</loc>
+    <loc>https://hambut.com/reading-list/</loc>
     <lastmod>2016-01-15T16:03:51+08:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -163,19 +186,22 @@
   <url>
     <loc>https://hambut.com/tags/linux/</loc>
     <lastmod>2015-12-22T11:28:47+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/tags/redis/</loc>
     <lastmod>2015-12-22T11:28:47+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/tags/shell/</loc>
     <lastmod>2015-12-22T11:28:47+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -188,13 +214,15 @@
   <url>
     <loc>https://hambut.com/tags/mysql/</loc>
     <lastmod>2013-04-01T12:29:39+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/tags/php/</loc>
     <lastmod>2013-04-01T12:29:39+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -207,7 +235,8 @@
   <url>
     <loc>https://hambut.com/tags/c/</loc>
     <lastmod>2013-03-07T12:19:21+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -220,7 +249,8 @@
   <url>
     <loc>https://hambut.com/tags/golang/</loc>
     <lastmod>2012-12-29T11:51:19+00:00</lastmod>
-    <priority>0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>

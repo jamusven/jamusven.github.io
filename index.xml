@@ -5,10 +5,74 @@
     <description>Recent content on 哈姆巴特</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 27 Mar 2019 23:11:21 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 28 Aug 2019 11:53:28 +0800</lastBuildDate>
     
         <atom:link href="https://hambut.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>TI9 魂断上海</title>
+      <link>https://hambut.com/2019/08/28/the-dream-of-ti9-had-broken-at-shanghai/</link>
+      <pubDate>Wed, 28 Aug 2019 11:53:28 +0800</pubDate>
+      
+      <guid>https://hambut.com/2019/08/28/the-dream-of-ti9-had-broken-at-shanghai/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;ti9&#34;&gt;TI9&lt;/h2&gt;
+
+&lt;p&gt;一年一度DOTA2的盛典于今年夏天不期而遇，但是今年的我感觉特别悲凉。&lt;/p&gt;
+
+&lt;p&gt;曾经一起战斗过的伙伴早已各奔东西，自己的生活时过境迁也过的稀里糊涂。&lt;/p&gt;
+
+&lt;p&gt;今年要不就金盆洗手吧，反正客户端也好几个月没开过了。对了还要有仪式感！想来想去还是感觉必须要去现场看中国队拿了冠军，退游才算完美！&lt;/p&gt;
+
+&lt;h2 id=&#34;难买的票&#34;&gt;难买的票&lt;/h2&gt;
+
+&lt;p&gt;放票当天早早的守在电脑前，把工作也暂时丢到了一边，谁也不能阻止我，我恶狠狠的想。&lt;/p&gt;
+
+&lt;p&gt;结局当然是全局覆没，最后从同学那收了一套…&lt;/p&gt;
+
+&lt;h2 id=&#34;一直往南方开&#34;&gt;一直往南方开&lt;/h2&gt;
+
+&lt;p&gt;周五下午孤身一人坐上开往上海的火车&lt;/p&gt;
+
+&lt;p&gt;在路上还在担心完全不知道明日的行程&lt;/p&gt;
+
+&lt;p&gt;几点到几点入场，怎么签到，怎么领取节日礼包，等等&lt;/p&gt;
+
+&lt;h2 id=&#34;沉重的消息&#34;&gt;沉重的消息&lt;/h2&gt;
+
+&lt;p&gt;得益于出发前的装逼，朋友圈的好友俺知道要去上海追梦&lt;/p&gt;
+
+&lt;p&gt;在火车上，一位已经许久没联系，但对我来说相不逢时的&amp;rdquo;会长大人&amp;rdquo;询问了我行程&lt;/p&gt;
+
+&lt;p&gt;于是我们有一句没一句的搭着话，直到聊到感情，才发现原来哥哥也已经分手了。不经有些唏嘘…&lt;/p&gt;
+
+&lt;p&gt;大家虽然都处于一种接受宿命的状态之中，但是彼此的选择天差地别，哥哥貌似勇敢的接受了新生…&lt;/p&gt;
+
+&lt;p&gt;我则选择继续抹杀一切的情感，让自己变得更加佛系，可能是因为麻烦，也可能是因为别的…&lt;/p&gt;
+
+&lt;h2 id=&#34;魂断上海-梦沉浦江&#34;&gt;魂断上海，梦沉浦江&lt;/h2&gt;
+
+&lt;p&gt;LGD输的那一刻，我知道此行已经结束！&lt;/p&gt;
+
+&lt;p&gt;DOTA对于我来说并不是一款游戏那么简单能概述的！&lt;/p&gt;
+
+&lt;p&gt;他是我人生黑暗的一盏明灯，是我逃避生活时的港湾，恋人争吵时缓冲的桥梁，发泄我负面情绪的收容站！&lt;/p&gt;
+
+&lt;p&gt;人在绝望之时，总想有点什么精神寄托，一旦连寄托都丢失了，人生会变得毫无生趣&lt;/p&gt;
+
+&lt;p&gt;我希望CN DOTA能圆满，我不希望他像我的生活一样变得一团糟糕&lt;/p&gt;
+
+&lt;p&gt;但是现实总是会在你充满希望之时给你最残忍的一击，把你彻底击溃&lt;/p&gt;
+
+&lt;h2 id=&#34;生活还得继续不是吗&#34;&gt;生活还得继续不是吗&lt;/h2&gt;
+
+&lt;p&gt;可能是吧&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>你要的全拿走，剩下的我承受，留下我们的狗</title>
@@ -985,14 +1049,19 @@ $ /data/soft/openresty/luajit/bin/luarocks install magick&lt;/code&gt;&lt;/pre&g
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo yum install golang git golang-pkg-*&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;h3 id=&#34;下载-ngrok&#34;&gt;下载&lt;code&gt;ngrok&lt;/code&gt;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git clone git@github.com:inconshreveable/ngrok.git
+$ &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ngrok&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;### 下载&lt;code&gt;ngrok&lt;/code&gt;
-&lt;code&gt;bash
-$ git clone git@github.com:inconshreveable/ngrok.git
-$ cd ngrok
-&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;/div&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;h3 id=&#34;根据域名生成自签名&#34;&gt;根据域名生成自签名&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1010,14 +1079,19 @@ $ openssl genrsa -out server.key &lt;span class=&#34;m&#34;&gt;2048&lt;/span&gt;
 $ openssl req -new -key server.key -subj &lt;span class=&#34;s2&#34;&gt;&amp;#34;/CN=t.hambut.com&amp;#34;&lt;/span&gt; -out server.csr
 $ openssl x509 -req -in server.csr -CA ngrokroot.pem -CAkey ngrokroot.key -CAcreateserial -days &lt;span class=&#34;m&#34;&gt;10000&lt;/span&gt; -out server.crt&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;h3 id=&#34;会生成6个证书文件&#34;&gt;会生成6个证书文件&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ls ngrokroot.* server.*
+ngrokroot.key  ngrokroot.pem  ngrokroot.srl  server.crt  server.csr  server.key&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;### 会生成6个证书文件
-&lt;code&gt;bash
-$ ls ngrokroot.* server.*
-ngrokroot.key  ngrokroot.pem  ngrokroot.srl  server.crt  server.csr  server.key
-&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;/div&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;h3 id=&#34;替换原始证书&#34;&gt;替换原始证书&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1031,9 +1105,9 @@ ngrokroot.key  ngrokroot.pem  ngrokroot.srl  server.crt  server.csr  server.key
 $ cp server.crt assets/server/tls/snakeoil.crt
 $ cp server.key assets/server/tls/snakeoil.key&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;### 修改源代码中库引用的错误&lt;/li&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;h3 id=&#34;修改源代码中库引用的错误&#34;&gt;修改源代码中库引用的错误&lt;/h3&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;由于google code的关闭，所以我们要把作者代码中的库引用地址修改一下
@@ -1045,8 +1119,8 @@ $ cp server.key assets/server/tls/snakeoil.key&lt;/code&gt;&lt;/pre&gt;&lt;/td&g
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;log &lt;span class=&#34;s2&#34;&gt;&amp;#34;code.google.com/p/log4go&amp;#34;&lt;/span&gt; 改为 log &lt;span class=&#34;s2&#34;&gt;&amp;#34;github.com/keepeye/log4go&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-
+&lt;/div&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;h3 id=&#34;开始编译&#34;&gt;开始编译&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1059,12 +1133,12 @@ $ cp server.key assets/server/tls/snakeoil.key&lt;/code&gt;&lt;/pre&gt;&lt;/td&g
 $ ls bin/
 go-bindata  ngrok  ngrokd&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h3 id=&#34;交叉编译&#34;&gt;交叉编译&lt;/h3&gt;&lt;/li&gt;
+&lt;/div&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;h4 id=&#34;windows&#34;&gt;windows&lt;/h4&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;h3 id=&#34;交叉编译&#34;&gt;交叉编译&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;h4 id=&#34;windows&#34;&gt;windows&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1078,11 +1152,9 @@ $ sudo &lt;span class=&#34;nv&#34;&gt;GOOS&lt;/span&gt;&lt;span class=&#34;o&#34
 $ &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; -
 $ sudo &lt;span class=&#34;nv&#34;&gt;GOOS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;windows &lt;span class=&#34;nv&#34;&gt;GOARCH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;386&lt;/span&gt; make release-client&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;#### arm&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;h4 id=&#34;arm&#34;&gt;arm&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1096,7 +1168,10 @@ $ sudo &lt;span class=&#34;nv&#34;&gt;GOOS&lt;/span&gt;&lt;span class=&#34;o&#34
 $ &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; -
 $ sudo &lt;span class=&#34;nv&#34;&gt;GOOS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;linux &lt;span class=&#34;nv&#34;&gt;GOARCH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;arm make release-client&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&#34;配置-使用-ngrok&#34;&gt;配置&amp;amp;使用 ngrok&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -1109,8 +1184,7 @@ $ sudo &lt;span class=&#34;nv&#34;&gt;GOOS&lt;/span&gt;&lt;span class=&#34;o&#34
 *.t -&amp;gt; A ip&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;### 启用ngrok 服务端&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;h3 id=&#34;启用ngrok-服务端&#34;&gt;启用ngrok 服务端&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1130,9 +1204,9 @@ $ ./ngrokd -domain&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#3
 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;14&lt;/span&gt;:59:42 CST &lt;span class=&#34;m&#34;&gt;2016&lt;/span&gt;/03/04&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;INFO&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;ngrok/log.Info:112&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; Listening &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; public https connections on &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;::&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;:4433
 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;14&lt;/span&gt;:59:42 CST &lt;span class=&#34;m&#34;&gt;2016&lt;/span&gt;/03/04&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;INFO&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;ngrok/log.Info:112&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; Listening &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; control and proxy connections on &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;::&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;:4443&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;### 启用ngrok 客户端&lt;/li&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;h3 id=&#34;启用ngrok-客户端&#34;&gt;启用ngrok 客户端&lt;/h3&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;将&lt;code&gt;ngrok&lt;/code&gt;文件复制到客户端机器上给执行权限&lt;/p&gt;
@@ -1384,38 +1458,42 @@ Output saved to   /home/hambut/Documents/vanilla/vanilla-source-code.mobi&lt;/co
       
         <description>
 
-&lt;h1 id=&#34;reading-list&#34;&gt;Reading List&lt;/h1&gt;
-
 &lt;h2 id=&#34;2019&#34;&gt;2019&lt;/h2&gt;
+
+&lt;h3 id=&#34;皮囊&#34;&gt;皮囊&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;蔡崇达 &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;26&lt;/sub&gt;~&lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;27&lt;/sub&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3 id=&#34;长安十二时辰&#34;&gt;长安十二时辰&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;马伯庸 2019/8/1 ~ 2019/8/9&lt;/p&gt;
+&lt;p&gt;马伯庸 &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;~&lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;9&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;这就是okr-让谷歌-亚马逊实现爆炸性增长的工作法&#34;&gt;这就是OKR:让谷歌、亚马逊实现爆炸性增长的工作法&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;约翰·杜尔 (John Doerr) (作者), 曹仰锋 (译者), 王永贵 (译者) 2019/3/23&lt;/p&gt;
+&lt;p&gt;约翰·杜尔 (John Doerr) (作者), 曹仰锋 (译者), 王永贵 (译者) &lt;sup&gt;3&lt;/sup&gt;&amp;frasl;&lt;sub&gt;23&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;西游漫记&#34;&gt;西游漫记&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;张光宇 2019/3/6&lt;/p&gt;
+&lt;p&gt;张光宇 &lt;sup&gt;3&lt;/sup&gt;&amp;frasl;&lt;sub&gt;6&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;亲密关系&#34;&gt;亲密关系&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;孟(Moon C.) 2019/3/1&lt;/p&gt;
+&lt;p&gt;孟(Moon C.) &lt;sup&gt;3&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;非暴力沟通&#34;&gt;非暴力沟通&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;[美] 马歇尔•卢森堡 2019/1/8&lt;/p&gt;
+&lt;p&gt;[美] 马歇尔•卢森堡 &lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;8&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&#34;2018&#34;&gt;2018&lt;/h2&gt;
@@ -1423,79 +1501,79 @@ Output saved to   /home/hambut/Documents/vanilla/vanilla-source-code.mobi&lt;/co
 &lt;h3 id=&#34;三体&#34;&gt;三体&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;《三体》《黑暗森林》《死神永生》刘慈欣 2018/9/25&lt;/p&gt;
+&lt;p&gt;《三体》《黑暗森林》《死神永生》刘慈欣 &lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;25&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;岛上书店&#34;&gt;岛上书店&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;[美]加·泽文（Gabrielle Zevin）2018/9/20&lt;/p&gt;
+&lt;p&gt;[美]加·泽文（Gabrielle &lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;20&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;虚无的十字架&#34;&gt;虚无的十字架&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;[日]东野圭吾 2018/9/18&lt;/p&gt;
+&lt;p&gt;[日]东野圭吾 &lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;18&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;月亮与六便士&#34;&gt;月亮与六便士&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;威廉·毛姆(William Maugham) 2018/9/14&lt;/p&gt;
+&lt;p&gt;威廉·毛姆(William Maugham) &lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;14&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;洛阳女儿行-ⅲ&#34;&gt;洛阳女儿行 Ⅲ&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;小椴 2018/9/9&lt;/p&gt;
+&lt;p&gt;小椴 &lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;9&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;洛阳女儿行-ⅱ&#34;&gt;洛阳女儿行 Ⅱ&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;小椴 2018/9/7&lt;/p&gt;
+&lt;p&gt;小椴 &lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;7&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;洛阳女儿行-ⅰ&#34;&gt;洛阳女儿行 Ⅰ&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;小椴 2018/9/5&lt;/p&gt;
+&lt;p&gt;小椴 &lt;sup&gt;9&lt;/sup&gt;&amp;frasl;&lt;sub&gt;5&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;长安古意&#34;&gt;长安古意&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;小椴 2018/8/31&lt;/p&gt;
+&lt;p&gt;小椴 &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;31&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;杯雪-夜雨打金荷&#34;&gt;杯雪·夜雨打金荷&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;小椴 2018/8/29&lt;/p&gt;
+&lt;p&gt;小椴 &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;29&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;抑郁症自愈疗法&#34;&gt;抑郁症自愈疗法&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;李增黉 2018/8/27&lt;/p&gt;
+&lt;p&gt;李增黉 &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;27&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;斜杠创业家&#34;&gt;斜杠创业家&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;[美] 金伯莉·帕尔默  2018/8/19&lt;/p&gt;
+&lt;p&gt;[美] 金伯莉·帕尔默  &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;19&lt;/sub&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;禅与摩托车维修艺术&#34;&gt;&lt;del&gt;禅与摩托车维修艺术&lt;/del&gt;&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;罗伯特·M·波西格 abandoned 2018/07/29&lt;/p&gt;
+&lt;p&gt;罗伯特·M·波西格 abandoned 07/29&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;北海道物语&#34;&gt;北海道物语&lt;/h3&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;[日]渡边淳一 2018/07/26&lt;/p&gt;
+&lt;p&gt;[日]渡边淳一 07/26&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;人间失格&#34;&gt;人间失格&lt;/h3&gt;

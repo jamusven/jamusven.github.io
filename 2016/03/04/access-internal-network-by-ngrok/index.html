@@ -34,7 +34,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.55.6" />
+<meta name="generator" content="Hugo 0.57.2" />
 
 
 <link rel="canonical" href="https://hambut.com/2016/03/04/access-internal-network-by-ngrok/" />
@@ -61,16 +61,15 @@
 <meta property="og:description" content="前言 想在家访问公司的 redmine 等私有服务及自我学习研究 本来 ngrok 自带的就够用了，不过好像最近被河蟹了，索性自己搭一个 要搭建自己的ngrok服务需要一台带" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hambut.com/2016/03/04/access-internal-network-by-ngrok/" />
-<meta property="article:published_time" content="2016-03-04T14:07:18&#43;00:00"/>
-<meta property="article:modified_time" content="2016-03-04T14:07:18&#43;00:00"/>
-
+<meta property="article:published_time" content="2016-03-04T14:07:18+00:00" />
+<meta property="article:modified_time" content="2016-03-04T14:07:18+00:00" />
 <meta itemprop="name" content="通过自建ngrok服务访问内网应用">
 <meta itemprop="description" content="前言 想在家访问公司的 redmine 等私有服务及自我学习研究 本来 ngrok 自带的就够用了，不过好像最近被河蟹了，索性自己搭一个 要搭建自己的ngrok服务需要一台带">
 
 
 <meta itemprop="datePublished" content="2016-03-04T14:07:18&#43;00:00" />
 <meta itemprop="dateModified" content="2016-03-04T14:07:18&#43;00:00" />
-<meta itemprop="wordCount" content="619">
+<meta itemprop="wordCount" content="615">
 
 
 
@@ -296,7 +295,7 @@
             <a href="https://hambut.com/categories/coding/"> coding </a>
             
           </div>
-        <span class="more-meta"> 619 words </span>
+        <span class="more-meta"> 615 words </span>
           <span class="more-meta"> 2 min read </span>
 
         
@@ -320,15 +319,23 @@
 <li><a href="#下载-编译">下载&amp;编译</a>
 <ul>
 <li><a href="#安装依赖">安装依赖</a></li>
+<li><a href="#下载-ngrok">下载<code>ngrok</code></a></li>
 <li><a href="#根据域名生成自签名">根据域名生成自签名</a></li>
+<li><a href="#会生成6个证书文件">会生成6个证书文件</a></li>
 <li><a href="#替换原始证书">替换原始证书</a></li>
+<li><a href="#修改源代码中库引用的错误">修改源代码中库引用的错误</a></li>
 <li><a href="#开始编译">开始编译</a></li>
 <li><a href="#交叉编译">交叉编译</a>
 <ul>
 <li><a href="#windows">windows</a></li>
+<li><a href="#arm">arm</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#配置-使用-ngrok">配置&amp;使用 ngrok</a></li>
+<li><a href="#配置-使用-ngrok">配置&amp;使用 ngrok</a>
+<ul>
+<li><a href="#启用ngrok-服务端">启用ngrok 服务端</a></li>
+<li><a href="#启用ngrok-客户端">启用ngrok 客户端</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -360,14 +367,19 @@
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo yum install golang git golang-pkg-*</code></pre></td></tr></table>
 </div>
+</div></li>
+
+<li><h3 id="下载-ngrok">下载<code>ngrok</code></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ git clone git@github.com:inconshreveable/ngrok.git
+$ <span class="nb">cd</span> ngrok</code></pre></td></tr></table>
 </div>
-<ul>
-<li>### 下载<code>ngrok</code>
-<code>bash
-$ git clone git@github.com:inconshreveable/ngrok.git
-$ cd ngrok
-</code></li>
-</ul></li>
+</div></li>
 
 <li><h3 id="根据域名生成自签名">根据域名生成自签名</h3>
 <div class="highlight"><div class="chroma">
@@ -385,14 +397,19 @@ $ openssl genrsa -out server.key <span class="m">2048</span>
 $ openssl req -new -key server.key -subj <span class="s2">&#34;/CN=t.hambut.com&#34;</span> -out server.csr
 $ openssl x509 -req -in server.csr -CA ngrokroot.pem -CAkey ngrokroot.key -CAcreateserial -days <span class="m">10000</span> -out server.crt</code></pre></td></tr></table>
 </div>
+</div></li>
+
+<li><h3 id="会生成6个证书文件">会生成6个证书文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ ls ngrokroot.* server.*
+ngrokroot.key  ngrokroot.pem  ngrokroot.srl  server.crt  server.csr  server.key</code></pre></td></tr></table>
 </div>
-<ul>
-<li>### 会生成6个证书文件
-<code>bash
-$ ls ngrokroot.* server.*
-ngrokroot.key  ngrokroot.pem  ngrokroot.srl  server.crt  server.csr  server.key
-</code></li>
-</ul></li>
+</div></li>
 
 <li><h3 id="替换原始证书">替换原始证书</h3>
 <div class="highlight"><div class="chroma">
@@ -406,9 +423,9 @@ ngrokroot.key  ngrokroot.pem  ngrokroot.srl  server.crt  server.csr  server.key
 $ cp server.crt assets/server/tls/snakeoil.crt
 $ cp server.key assets/server/tls/snakeoil.key</code></pre></td></tr></table>
 </div>
-</div>
-<ul>
-<li>### 修改源代码中库引用的错误</li>
+</div></li>
+
+<li><h3 id="修改源代码中库引用的错误">修改源代码中库引用的错误</h3></li>
 </ul>
 
 <p>由于google code的关闭，所以我们要把作者代码中的库引用地址修改一下
@@ -420,8 +437,8 @@ $ cp server.key assets/server/tls/snakeoil.key</code></pre></td></tr></table>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">log <span class="s2">&#34;code.google.com/p/log4go&#34;</span> 改为 log <span class="s2">&#34;github.com/keepeye/log4go&#34;</span></code></pre></td></tr></table>
 </div>
-</div></li>
-
+</div>
+<ul>
 <li><h3 id="开始编译">开始编译</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -434,12 +451,12 @@ $ cp server.key assets/server/tls/snakeoil.key</code></pre></td></tr></table>
 $ ls bin/
 go-bindata  ngrok  ngrokd</code></pre></td></tr></table>
 </div>
-</div>
-<ul>
-<li><h3 id="交叉编译">交叉编译</h3></li>
+</div></li>
 
-<li><h4 id="windows">windows</h4></li>
-</ul>
+<li><h3 id="交叉编译">交叉编译</h3>
+
+<ul>
+<li><h4 id="windows">windows</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -453,11 +470,9 @@ $ sudo <span class="nv">GOOS</span><span class="o">=</span>windows <span class="
 $ <span class="nb">cd</span> -
 $ sudo <span class="nv">GOOS</span><span class="o">=</span>windows <span class="nv">GOARCH</span><span class="o">=</span><span class="m">386</span> make release-client</code></pre></td></tr></table>
 </div>
-</div>
-<ul>
-<li>#### arm</li>
-</ul></li>
-</ul>
+</div></li>
+
+<li><h4 id="arm">arm</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -471,7 +486,10 @@ $ sudo <span class="nv">GOOS</span><span class="o">=</span>linux <span class="nv
 $ <span class="nb">cd</span> -
 $ sudo <span class="nv">GOOS</span><span class="o">=</span>linux <span class="nv">GOARCH</span><span class="o">=</span>arm make release-client</code></pre></td></tr></table>
 </div>
-</div>
+</div></li>
+</ul></li>
+</ul>
+
 <h2 id="配置-使用-ngrok">配置&amp;使用 ngrok</h2>
 
 <ul>
@@ -484,8 +502,7 @@ $ sudo <span class="nv">GOOS</span><span class="o">=</span>linux <span class="nv
 *.t -&gt; A ip</p>
 
 <ul>
-<li>### 启用ngrok 服务端</li>
-</ul>
+<li><h3 id="启用ngrok-服务端">启用ngrok 服务端</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -505,9 +522,9 @@ $ ./ngrokd -domain<span class="o">=</span><span class="s2">&#34;t.hambut.com&#34
 <span class="o">[</span><span class="m">14</span>:59:42 CST <span class="m">2016</span>/03/04<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">(</span>ngrok/log.Info:112<span class="o">)</span> Listening <span class="k">for</span> public https connections on <span class="o">[</span>::<span class="o">]</span>:4433
 <span class="o">[</span><span class="m">14</span>:59:42 CST <span class="m">2016</span>/03/04<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">(</span>ngrok/log.Info:112<span class="o">)</span> Listening <span class="k">for</span> control and proxy connections on <span class="o">[</span>::<span class="o">]</span>:4443</code></pre></td></tr></table>
 </div>
-</div>
-<ul>
-<li>### 启用ngrok 客户端</li>
+</div></li>
+
+<li><h3 id="启用ngrok-客户端">启用ngrok 客户端</h3></li>
 </ul>
 
 <p>将<code>ngrok</code>文件复制到客户端机器上给执行权限</p>
