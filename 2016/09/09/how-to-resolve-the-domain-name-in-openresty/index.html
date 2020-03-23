@@ -34,7 +34,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.57.2" />
+<meta name="generator" content="Hugo 0.61.0" />
 
 
 <link rel="canonical" href="https://hambut.com/2016/09/09/how-to-resolve-the-domain-name-in-openresty/" />
@@ -65,16 +65,13 @@
 <meta property="article:modified_time" content="2016-09-09T12:17:55+00:00" />
 <meta itemprop="name" content="如何在openresty里解析域名">
 <meta itemprop="description" content="为什么我们的域名不能被解析 最近经常有朋友在使用一个域名地址时发现无法被正确解析 比如在使用Mysql实例时某些云会给一个私有的域名搭配自有的n">
-
-
 <meta itemprop="datePublished" content="2016-09-09T12:17:55&#43;00:00" />
 <meta itemprop="dateModified" content="2016-09-09T12:17:55&#43;00:00" />
 <meta itemprop="wordCount" content="1163">
 
 
 
-<meta itemprop="keywords" content="openresty,lua," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="openresty,lua," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="如何在openresty里解析域名"/>
 <meta name="twitter:description" content="为什么我们的域名不能被解析 最近经常有朋友在使用一个域名地址时发现无法被正确解析 比如在使用Mysql实例时某些云会给一个私有的域名搭配自有的n"/>
 
@@ -312,33 +309,26 @@
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#为什么我们的域名不能被解析">为什么我们的域名不能被解析</a></li>
-<li><a href="#搭配-resolver-指令">搭配 resolver 指令</a></li>
-<li><a href="#进阶玩法">进阶玩法</a></li>
-<li><a href="#高阶玩法">高阶玩法</a></li>
-<li><a href="#最终的演示例子如下">最终的演示例子如下</a></li>
-<li><a href="#如何使用-etc-hosts-自定义域名">如何使用 /etc/hosts 自定义域名</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">为什么我们的域名不能被解析</a></li>
+    <li><a href="#-resolver-">搭配 resolver 指令</a></li>
+    <li><a href="#heading-1">进阶玩法</a></li>
+    <li><a href="#heading-2">高阶玩法</a></li>
+    <li><a href="#heading-3">最终的演示例子如下</a></li>
+    <li><a href="#-etchosts-">如何使用 /etc/hosts 自定义域名</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h2 id="为什么我们的域名不能被解析">为什么我们的域名不能被解析</h2>
-
+      <h2 id="heading">为什么我们的域名不能被解析</h2>
 <p>最近经常有朋友在使用一个域名地址时发现无法被正确解析</p>
-
 <p>比如在使用<code>Mysql</code>实例时某些云会给一个私有的域名搭配自有的<code>nameserver</code>使用</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -348,56 +338,49 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">client</span> <span class="o">=</span> <span class="n">mysql</span><span class="p">:</span><span class="n">new</span><span class="p">()</span>
-<span class="n">client</span><span class="p">:</span><span class="n">connect</span><span class="p">({</span>
-	<span class="n">host</span> <span class="o">=</span> <span class="s2">&#34;rdsmxxxxxx.mysql.rds.xxxx.com&#34;</span><span class="p">,</span>
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">client</span> <span class="o">=</span> <span class="n">mysql</span><span class="p">:</span><span class="n">new</span><span class="p">(</span><span class="p">)</span>
+<span class="n">client</span><span class="p">:</span><span class="n">connect</span><span class="p">(</span><span class="p">{</span>
+	<span class="n">host</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="s2">rdsmxxxxxx.mysql.rds.xxxx.com</span><span class="s2">&#34;</span><span class="p">,</span>
 	<span class="n">port</span> <span class="o">=</span> <span class="mi">3306</span><span class="p">,</span>
-	<span class="n">database</span> <span class="o">=</span> <span class="s2">&#34;test&#34;</span><span class="p">,</span>
-	<span class="n">user</span> <span class="o">=</span> <span class="s2">&#34;test&#34;</span><span class="p">,</span>
-	<span class="n">password</span> <span class="o">=</span> <span class="s2">&#34;123456&#34;</span>
-<span class="p">})</span></code></pre></td></tr></table>
+	<span class="n">database</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="s2">test</span><span class="s2">&#34;</span><span class="p">,</span>
+	<span class="n">user</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="s2">test</span><span class="s2">&#34;</span><span class="p">,</span>
+	<span class="n">password</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="s2">123456</span><span class="s2">&#34;</span>
+<span class="p">}</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>以上代码在直接使用时往往会报一个无法解析的错误。那么怎么在<code>openresty</code>中使用域名呢</p>
-
-<!-- more -->
-
-<h2 id="搭配-resolver-指令">搭配 resolver 指令</h2>
-
+</div><p>以上代码在直接使用时往往会报一个无法解析的错误。那么怎么在<code>openresty</code>中使用域名呢</p>
+<!-- raw HTML omitted -->
+<h2 id="-resolver-">搭配 resolver 指令</h2>
 <p>我们可以直接在 <code>nginx</code> 的配置文件中使用 <code>resolver</code> 指令直接设置使用的 <code>nameserver</code> 地址。</p>
-
 <p>官方文档中是这么描述的</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-conf" data-lang="conf">Syntax:	resolver address ... [valid=time] [ipv6=on|off];
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Syntax:	resolver address ... [valid=time] [ipv6=on|off];
 Default:	 —
-Context:	http, server, location</code></pre></td></tr></table>
+Context:	http, server, location
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>一个简单的例子</p>
+</div><p>一个简单的例子</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-conf" data-lang="conf"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-conf" data-lang="conf">resolver 8.8.8.8 114.114.114.114 valid=3600s;</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">resolver 8.8.8.8 114.114.114.114 valid=3600s;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>不过这样的问题在于<code>nameserver</code>被写死在配置文件中，如果使用场景比较复杂或有内部<code>dns</code>服务时维护比较麻烦。</p>
-
-<h2 id="进阶玩法">进阶玩法</h2>
-
+</div><p>不过这样的问题在于<code>nameserver</code>被写死在配置文件中，如果使用场景比较复杂或有内部<code>dns</code>服务时维护比较麻烦。</p>
+<h2 id="heading-1">进阶玩法</h2>
 <p>我们的代码常常运行在各种云上，为了减少维护成本，我采用了动态读取本机<code>/etc/resolv.conf</code>的方法来做。</p>
-
 <p>废话不说，让我们一睹为快。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -441,31 +424,31 @@ Context:	http, server, location</code></pre></td></tr></table>
 <span class="kd">local</span> <span class="n">io_open</span> <span class="o">=</span> <span class="n">io.open</span>
 <span class="kd">local</span> <span class="n">ngx_re_gmatch</span> <span class="o">=</span> <span class="n">ngx.re</span><span class="p">.</span><span class="n">gmatch</span>
 
-<span class="kd">local</span> <span class="n">ok</span><span class="p">,</span> <span class="n">new_tab</span> <span class="o">=</span> <span class="n">pcall</span><span class="p">(</span><span class="n">require</span><span class="p">,</span> <span class="s2">&#34;table.new&#34;</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">ok</span><span class="p">,</span> <span class="n">new_tab</span> <span class="o">=</span> <span class="n">pcall</span><span class="p">(</span><span class="n">require</span><span class="p">,</span> <span class="s2">&#34;</span><span class="s2">table.new</span><span class="s2">&#34;</span><span class="p">)</span>
 
 <span class="kr">if</span> <span class="ow">not</span> <span class="n">ok</span> <span class="kr">then</span>
-    <span class="n">new_tab</span> <span class="o">=</span> <span class="kr">function</span> <span class="p">(</span><span class="n">narr</span><span class="p">,</span> <span class="n">nrec</span><span class="p">)</span> <span class="kr">return</span> <span class="p">{}</span> <span class="kr">end</span>
+    <span class="n">new_tab</span> <span class="o">=</span> <span class="kr">function</span> <span class="p">(</span><span class="n">narr</span><span class="p">,</span> <span class="n">nrec</span><span class="p">)</span> <span class="kr">return</span> <span class="p">{</span><span class="p">}</span> <span class="kr">end</span>
 <span class="kr">end</span>
 
 <span class="kd">local</span> <span class="n">_dns_servers</span> <span class="o">=</span> <span class="n">new_tab</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="kd">local</span> <span class="n">_read_file_data</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-    <span class="kd">local</span> <span class="n">f</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">io_open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">f</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">io_open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;</span><span class="s1">r</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="kr">if</span> <span class="ow">not</span> <span class="n">f</span> <span class="ow">or</span> <span class="n">err</span> <span class="kr">then</span>
         <span class="kr">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">err</span>
     <span class="kr">end</span>
 
-    <span class="kd">local</span> <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="p">:</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;*all&#39;</span><span class="p">)</span>
-    <span class="n">f</span><span class="p">:</span><span class="n">close</span><span class="p">()</span>
+    <span class="kd">local</span> <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="p">:</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;</span><span class="s1">*all</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="p">:</span><span class="n">close</span><span class="p">(</span><span class="p">)</span>
     <span class="kr">return</span> <span class="n">data</span><span class="p">,</span> <span class="kc">nil</span>
 <span class="kr">end</span>
 
-<span class="kd">local</span> <span class="n">_read_dns_servers_from_resolv_file</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span>
-    <span class="kd">local</span> <span class="n">text</span> <span class="o">=</span> <span class="n">_read_file_data</span><span class="p">(</span><span class="s1">&#39;/etc/resolv.conf&#39;</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">_read_dns_servers_from_resolv_file</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">text</span> <span class="o">=</span> <span class="n">_read_file_data</span><span class="p">(</span><span class="s1">&#39;</span><span class="s1">/etc/resolv.conf</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="kd">local</span> <span class="n">captures</span><span class="p">,</span> <span class="n">it</span><span class="p">,</span> <span class="n">err</span>
-    <span class="n">it</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">ngx_re_gmatch</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="s">[[^nameserver\s+(\d+?\.\d+?\.\d+?\.\d+$)]]</span><span class="p">,</span> <span class="s2">&#34;jomi&#34;</span><span class="p">)</span>
+    <span class="n">it</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">ngx_re_gmatch</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="s">[[^nameserver\s+(\d+?\.\d+?\.\d+?\.\d+$)]]</span><span class="p">,</span> <span class="s2">&#34;</span><span class="s2">jomi</span><span class="s2">&#34;</span><span class="p">)</span>
 
     <span class="kr">for</span> <span class="n">captures</span><span class="p">,</span> <span class="n">err</span> <span class="kr">in</span> <span class="n">it</span> <span class="kr">do</span>
         <span class="kr">if</span> <span class="ow">not</span> <span class="n">err</span> <span class="kr">then</span>
@@ -474,13 +457,13 @@ Context:	http, server, location</code></pre></td></tr></table>
     <span class="kr">end</span>
 <span class="kr">end</span>
 
-<span class="n">_read_dns_servers_from_resolv_file</span><span class="p">()</span></code></pre></td></tr></table>
+<span class="n">_read_dns_servers_from_resolv_file</span><span class="p">(</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>通过上述代码我们成功动态拿到了一组<code>nameserver</code>的地址，下面就可以通过<code>resty.dns.resolver</code>大杀四方了</p>
+</div><p>通过上述代码我们成功动态拿到了一组<code>nameserver</code>的地址，下面就可以通过<code>resty.dns.resolver</code>大杀四方了</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -533,12 +516,12 @@ Context:	http, server, location</code></pre></td></tr></table>
 <td class="lntd">
 <pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">require</span> <span class="o">=</span> <span class="n">require</span>
 <span class="kd">local</span> <span class="n">ngx_re_find</span> <span class="o">=</span> <span class="n">ngx.re</span><span class="p">.</span><span class="n">find</span>
-<span class="kd">local</span> <span class="n">lrucache</span> <span class="o">=</span> <span class="n">require</span> <span class="s2">&#34;resty.lrucache&#34;</span>
-<span class="kd">local</span> <span class="n">resolver</span> <span class="o">=</span> <span class="n">require</span> <span class="s2">&#34;resty.dns.resolver&#34;</span>
+<span class="kd">local</span> <span class="n">lrucache</span> <span class="o">=</span> <span class="n">require</span> <span class="s2">&#34;</span><span class="s2">resty.lrucache</span><span class="s2">&#34;</span>
+<span class="kd">local</span> <span class="n">resolver</span> <span class="o">=</span> <span class="n">require</span> <span class="s2">&#34;</span><span class="s2">resty.dns.resolver</span><span class="s2">&#34;</span>
 <span class="kd">local</span> <span class="n">cache_storage</span> <span class="o">=</span> <span class="n">lrucache.new</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
 
 <span class="kd">local</span> <span class="n">_is_addr</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">hostname</span><span class="p">)</span>
-    <span class="kr">return</span> <span class="n">ngx_re_find</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="s">[[\d+?\.\d+?\.\d+?\.\d+$]]</span><span class="p">,</span> <span class="s2">&#34;jo&#34;</span><span class="p">)</span>
+    <span class="kr">return</span> <span class="n">ngx_re_find</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="s">[[\d+?\.\d+?\.\d+?\.\d+$]]</span><span class="p">,</span> <span class="s2">&#34;</span><span class="s2">jo</span><span class="s2">&#34;</span><span class="p">)</span>
 <span class="kr">end</span>
 
 <span class="kd">local</span> <span class="n">_get_addr</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">hostname</span><span class="p">)</span>
@@ -552,17 +535,17 @@ Context:	http, server, location</code></pre></td></tr></table>
         <span class="kr">return</span> <span class="n">addr</span><span class="p">,</span> <span class="n">hostname</span>
     <span class="kr">end</span>
 
-    <span class="kd">local</span> <span class="n">r</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">resolver</span><span class="p">:</span><span class="n">new</span><span class="p">({</span>
+    <span class="kd">local</span> <span class="n">r</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">resolver</span><span class="p">:</span><span class="n">new</span><span class="p">(</span><span class="p">{</span>
         <span class="n">nameservers</span> <span class="o">=</span> <span class="n">_dns_servers</span><span class="p">,</span>
         <span class="n">retrans</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>  <span class="c1">-- 5 retransmissions on receive timeout</span>
         <span class="n">timeout</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">,</span>  <span class="c1">-- 2 sec</span>
-    <span class="p">})</span>
+    <span class="p">}</span><span class="p">)</span>
 
     <span class="kr">if</span> <span class="ow">not</span> <span class="n">r</span> <span class="kr">then</span>
         <span class="kr">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">hostname</span>
     <span class="kr">end</span>
 
-    <span class="kd">local</span> <span class="n">answers</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">r</span><span class="p">:</span><span class="n">query</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="p">{</span><span class="n">qtype</span> <span class="o">=</span> <span class="n">r.TYPE_A</span><span class="p">})</span>
+    <span class="kd">local</span> <span class="n">answers</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">r</span><span class="p">:</span><span class="n">query</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="p">{</span><span class="n">qtype</span> <span class="o">=</span> <span class="n">r.TYPE_A</span><span class="p">}</span><span class="p">)</span>
 
     <span class="kr">if</span> <span class="ow">not</span> <span class="n">answers</span> <span class="ow">or</span> <span class="n">answers.errcode</span> <span class="kr">then</span>
         <span class="kr">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">hostname</span>
@@ -578,26 +561,20 @@ Context:	http, server, location</code></pre></td></tr></table>
     <span class="kr">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">hostname</span>
 <span class="kr">end</span>
 
-<span class="n">ngx.say</span><span class="p">(</span><span class="n">_get_addr</span><span class="p">(</span><span class="s2">&#34;www.baidu.com&#34;</span><span class="p">))</span>
-<span class="n">ngx.say</span><span class="p">(</span><span class="n">_get_addr</span><span class="p">(</span><span class="s2">&#34;192.168.0.1&#34;</span><span class="p">))</span></code></pre></td></tr></table>
+<span class="n">ngx.say</span><span class="p">(</span><span class="n">_get_addr</span><span class="p">(</span><span class="s2">&#34;</span><span class="s2">www.baidu.com</span><span class="s2">&#34;</span><span class="p">)</span><span class="p">)</span>
+<span class="n">ngx.say</span><span class="p">(</span><span class="n">_get_addr</span><span class="p">(</span><span class="s2">&#34;</span><span class="s2">192.168.0.1</span><span class="s2">&#34;</span><span class="p">)</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>我这边把解析的结果放入了<code>lrucache</code>缓存了5分钟，你们同样可以把结果放入<code>shared</code>中来减少<code>worker</code>查询次数。</p>
-
-<h2 id="高阶玩法">高阶玩法</h2>
-
+</div><p>我这边把解析的结果放入了<code>lrucache</code>缓存了5分钟，你们同样可以把结果放入<code>shared</code>中来减少<code>worker</code>查询次数。</p>
+<h2 id="heading-2">高阶玩法</h2>
 <p>现在我们已经实现了自缓存体系的<code>dns</code>查询，如果搭配<a href="https://github.com/pintsized/lua-resty-http">resty.http</a>就会达到更好的效果。</p>
-
 <p>一个简单的例子是，通过解析<code>uri</code>得到<code>hostname</code>、<code>port</code>、<code>path</code>，把<code>hostname</code>扔给自缓存<code>dns</code>获取结果</p>
-
 <p>发起<code>request</code>请求，<code>addr</code> + <code>port</code> connect 之，设置<code>header</code>的<code>host</code>为<code>hostname</code>， <code>path</code>等值来实现<code>ip</code>直接访问等高阶用法。</p>
-
 <p>这里就不过多的阐述了。</p>
-
-<h2 id="最终的演示例子如下">最终的演示例子如下</h2>
+<h2 id="heading-3">最终的演示例子如下</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -607,22 +584,19 @@ Context:	http, server, location</code></pre></td></tr></table>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">client</span> <span class="o">=</span> <span class="n">mysql</span><span class="p">:</span><span class="n">new</span><span class="p">()</span>
-<span class="n">client</span><span class="p">:</span><span class="n">connect</span><span class="p">({</span>
-	<span class="n">host</span> <span class="o">=</span> <span class="n">_get_addr</span><span class="p">(</span><span class="n">conf.mysql_hostname</span><span class="p">),</span>
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">client</span> <span class="o">=</span> <span class="n">mysql</span><span class="p">:</span><span class="n">new</span><span class="p">(</span><span class="p">)</span>
+<span class="n">client</span><span class="p">:</span><span class="n">connect</span><span class="p">(</span><span class="p">{</span>
+	<span class="n">host</span> <span class="o">=</span> <span class="n">_get_addr</span><span class="p">(</span><span class="n">conf.mysql_hostname</span><span class="p">)</span><span class="p">,</span>
 	<span class="n">port</span> <span class="o">=</span> <span class="mi">3306</span><span class="p">,</span>
-	<span class="n">database</span> <span class="o">=</span> <span class="s2">&#34;test&#34;</span><span class="p">,</span>
-	<span class="n">user</span> <span class="o">=</span> <span class="s2">&#34;test&#34;</span><span class="p">,</span>
-	<span class="n">password</span> <span class="o">=</span> <span class="s2">&#34;123456&#34;</span>
-<span class="p">})</span></code></pre></td></tr></table>
+	<span class="n">database</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="s2">test</span><span class="s2">&#34;</span><span class="p">,</span>
+	<span class="n">user</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="s2">test</span><span class="s2">&#34;</span><span class="p">,</span>
+	<span class="n">password</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="s2">123456</span><span class="s2">&#34;</span>
+<span class="p">}</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<h2 id="如何使用-etc-hosts-自定义域名">如何使用 /etc/hosts 自定义域名</h2>
-
+</div><h2 id="-etchosts-">如何使用 /etc/hosts 自定义域名</h2>
 <p>还有些同学可能会在<code>hosts</code>文件中自定义域名和<code>ip</code>，这时候<code>resolve</code>是无法正常解析的。</p>
-
 <p>这个时候可以借助<code>dnsmasq</code>这个服务来缓存我们的<code>dns</code>结果，而且<code>hosts</code>文件中的定义可以被该服务识别。</p>
-
 <p>需要在<code>nginx</code>的配置文件中，设置<code>resolver</code>为<code>dnsmasq</code>服务的监听地址即可。</p>
 
     </div>
@@ -729,7 +703,7 @@ Context:	http, server, location</code></pre></td></tr></table>
     &copy;
     
       2014 -
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span><span class="author">

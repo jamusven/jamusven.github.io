@@ -34,7 +34,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.57.2" />
+<meta name="generator" content="Hugo 0.61.0" />
 
 
 <link rel="canonical" href="https://hambut.com/2012/12/29/golang-udpserver/" />
@@ -65,16 +65,13 @@
 <meta property="article:modified_time" content="2012-12-29T11:51:19+00:00" />
 <meta itemprop="name" content="golang实现的udpserver防沉迷服务">
 <meta itemprop="description" content="公司要做防沉迷，需要游戏端及时向中心服通知在线时长 如果游戏逻辑中用curl请求我比较担心请求太慢，导致游戏逻辑本身处理速度变慢 所以最后考虑了">
-
-
 <meta itemprop="datePublished" content="2012-12-29T11:51:19&#43;00:00" />
 <meta itemprop="dateModified" content="2012-12-29T11:51:19&#43;00:00" />
 <meta itemprop="wordCount" content="392">
 
 
 
-<meta itemprop="keywords" content="golang," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="golang实现的udpserver防沉迷服务"/>
 <meta name="twitter:description" content="公司要做防沉迷，需要游戏端及时向中心服通知在线时长 如果游戏逻辑中用curl请求我比较担心请求太慢，导致游戏逻辑本身处理速度变慢 所以最后考虑了"/>
 
@@ -311,26 +308,21 @@
 <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
-    
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
 
     
     <div class="post-content">
       <p>公司要做防沉迷，需要游戏端及时向中心服通知在线时长</p>
-
 <p>如果游戏逻辑中用curl请求我比较担心请求太慢，导致游戏逻辑本身处理速度变慢</p>
-
 <p>所以最后考虑了一下决定使用udp来实现，首先他不需要那么多次的握手，速度会比tcp快一些</p>
-
 <p>php客户端连上写完数据就close -&gt; go收到数据包就转发给api中心服 -&gt; 中心服处理完后回调游戏逻辑服</p>
-
-<!-- more -->
-
+<!-- raw HTML omitted -->
 <p>udp server 代码实现如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-golang" data-lang="golang"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -398,21 +390,21 @@
 	<span class="nx">UDP_PORT</span>   <span class="p">=</span> <span class="mi">1234</span>
 <span class="p">)</span>
  
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kd">func</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
 	<span class="nx">socket</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nf">ListenUDP</span><span class="p">(</span><span class="s">&#34;udp4&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">net</span><span class="p">.</span><span class="nx">UDPAddr</span><span class="p">{</span>
-		<span class="nx">IP</span><span class="p">:</span>   <span class="nx">net</span><span class="p">.</span><span class="nf">IPv4</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+		<span class="nx">IP</span><span class="p">:</span>   <span class="nx">net</span><span class="p">.</span><span class="nf">IPv4</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="p">,</span>
 		<span class="nx">Port</span><span class="p">:</span> <span class="nx">UDP_PORT</span><span class="p">,</span>
-	<span class="p">})</span>
+	<span class="p">}</span><span class="p">)</span>
  
 	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;监听失败&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
 		<span class="k">return</span>
 	<span class="p">}</span>
  
-	<span class="k">defer</span> <span class="nx">socket</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+	<span class="k">defer</span> <span class="nx">socket</span><span class="p">.</span><span class="nf">Close</span><span class="p">(</span><span class="p">)</span>
  
 	<span class="k">for</span> <span class="p">{</span>
-		<span class="nx">data</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+		<span class="nx">data</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="p">[</span><span class="p">]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
 		<span class="nx">read</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">socket</span><span class="p">.</span><span class="nf">ReadFromUDP</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
  
 		<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -420,7 +412,7 @@
 			<span class="k">continue</span>
 		<span class="p">}</span>
  
-		<span class="k">go</span> <span class="nf">forward</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">data</span><span class="p">[:</span><span class="nx">read</span><span class="p">]))</span>
+		<span class="k">go</span> <span class="nf">forward</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">data</span><span class="p">[</span><span class="p">:</span><span class="nx">read</span><span class="p">]</span><span class="p">)</span><span class="p">)</span>
 	<span class="p">}</span>
 <span class="p">}</span>
  
@@ -428,14 +420,15 @@
 	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s\n&#34;</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
  
 	<span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">PostForm</span><span class="p">(</span><span class="nx">API_SERVER</span><span class="p">,</span>
-		<span class="nx">url</span><span class="p">.</span><span class="nx">Values</span><span class="p">{</span><span class="s">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span><span class="nx">data</span><span class="p">}})</span>
+		<span class="nx">url</span><span class="p">.</span><span class="nx">Values</span><span class="p">{</span><span class="s">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span><span class="nx">data</span><span class="p">}</span><span class="p">}</span><span class="p">)</span>
  
 	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;请求API错误&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
 	<span class="p">}</span>
  
-	<span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
-<span class="p">}</span></code></pre></td></tr></table>
+	<span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nf">Close</span><span class="p">(</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -541,7 +534,7 @@
     &copy;
     
       2014 -
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span><span class="author">

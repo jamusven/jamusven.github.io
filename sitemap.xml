@@ -2,8 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hambut.com/categories/</loc>
+    <lastmod>2020-03-23T22:42:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hambut.com/tags/emotion/</loc>
+    <lastmod>2020-03-23T22:42:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hambut.com/2020/03/23/february-29/</loc>
+    <lastmod>2020-03-23T22:42:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hambut.com/categories/life/</loc>
+    <lastmod>2020-03-23T22:42:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://hambut.com/post/</loc>
-    <lastmod>2019-08-28T11:53:28+08:00</lastmod>
+    <lastmod>2020-03-23T22:42:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hambut.com/tags/</loc>
+    <lastmod>2020-03-23T22:42:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hambut.com/</loc>
+    <lastmod>2020-03-23T22:42:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -16,42 +58,7 @@
   </url>
   
   <url>
-    <loc>https://hambut.com/</loc>
-    <lastmod>2019-08-28T11:53:28+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://hambut.com/categories/</loc>
-    <lastmod>2019-03-27T23:11:21+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://hambut.com/tags/emotion/</loc>
-    <lastmod>2019-03-27T23:11:21+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://hambut.com/categories/life/</loc>
-    <lastmod>2019-03-27T23:11:21+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://hambut.com/tags/love/</loc>
-    <lastmod>2019-03-27T23:11:21+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://hambut.com/tags/</loc>
     <lastmod>2019-03-27T23:11:21+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

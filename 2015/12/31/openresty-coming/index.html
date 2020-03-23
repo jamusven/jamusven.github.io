@@ -34,7 +34,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.57.2" />
+<meta name="generator" content="Hugo 0.61.0" />
 
 
 <link rel="canonical" href="https://hambut.com/2015/12/31/openresty-coming/" />
@@ -65,16 +65,13 @@
 <meta property="article:modified_time" content="2015-12-31T16:08:36+00:00" />
 <meta itemprop="name" content="OpenResty的大时代已经来临">
 <meta itemprop="description" content="序言 趁着锤子科技宣布要把门票收入捐给 OpenResty 社区建设的大事件的热潮还在。 我也想写写我和 OpenResty 的前世今生。 2012初识 OpenResty，开发第一个游戏">
-
-
 <meta itemprop="datePublished" content="2015-12-31T16:08:36&#43;00:00" />
 <meta itemprop="dateModified" content="2015-12-31T16:08:36&#43;00:00" />
 <meta itemprop="wordCount" content="1038">
 
 
 
-<meta itemprop="keywords" content="openresty," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="openresty," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenResty的大时代已经来临"/>
 <meta name="twitter:description" content="序言 趁着锤子科技宣布要把门票收入捐给 OpenResty 社区建设的大事件的热潮还在。 我也想写写我和 OpenResty 的前世今生。 2012初识 OpenResty，开发第一个游戏"/>
 
@@ -312,94 +309,69 @@
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#序言">序言</a></li>
-<li><a href="#缘起">缘起</a></li>
-<li><a href="#开始选型">开始选型</a></li>
-<li><a href="#那些年我们趟过的坑">那些年我们趟过的坑</a></li>
-<li><a href="#我们的使用场景">我们的使用场景</a></li>
-<li><a href="#待替换方案">待替换方案</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">序言</a></li>
+    <li><a href="#heading-1">缘起</a></li>
+    <li><a href="#heading-2">开始选型</a></li>
+    <li><a href="#heading-3">那些年我们趟过的坑</a></li>
+    <li><a href="#heading-4">我们的使用场景</a></li>
+    <li><a href="#heading-5">待替换方案</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<h2 id="序言">序言</h2>
-
+      <h2 id="heading">序言</h2>
 <p>趁着锤子科技宣布要把门票收入捐给 <code>OpenResty</code> 社区建设的大事件的热潮还在。
 我也想写写我和 <code>OpenResty</code> 的前世今生。</p>
-
 <p>2012初识 <code>OpenResty</code>，开发第一个游戏项目。
 2015结识 <code>OpenResty</code> 社区发起者，并以第3名的好成绩率先加入 <code>Openresty 技术交流</code> QQ群。</p>
-
 <p>还记得360公司小伙伴在 <code>GoogleGroups</code> 说发起了一本叫 <code>OpenResty最佳实践</code> 的书。<a href="https://github.com/moonbingbing/openresty-best-practices">https://github.com/moonbingbing/openresty-best-practices</a>
 当时我的心情是复杂的，孤独在路上奋斗了3年，突然找了组织，那种心情无以言表。</p>
-
 <p>楼下的让一让，我要开始装逼了！</p>
-
-<!-- more -->
-
-<h2 id="缘起">缘起</h2>
-
+<!-- raw HTML omitted -->
+<h2 id="heading-1">缘起</h2>
 <p>想起那还是在2012年，新项目要求必须达到同时在线30W的硬性标准才能立项。
 我们当时的技术方案想要达成该目标需要耗费比较高的运营成本，不得以需要寻找新的技术方向。
 当时我们团队的技术栈为 <code>golang</code>、<code>php</code>，前者团队转型困难，后者性能和成本超出预计。</p>
-
-<h2 id="开始选型">开始选型</h2>
-
+<h2 id="heading-2">开始选型</h2>
 <p>通过努力我们找到两个待选方案，一个是 <code>Netty</code>，一个是 <code>OpenResty</code>。
 <code>Netty</code> 由当时的负责 <code>golang</code> 的同学继续做技术储备。
 <code>OpenResty</code> 由我继续做技术储备。</p>
-
 <p>在综合考虑公司成员技术栈构成、学习成本、开发效率、执行效率、运营成本后。
 最终选定了 <code>OpenResty</code> 为今后的开发主力。</p>
-
-<h2 id="那些年我们趟过的坑">那些年我们趟过的坑</h2>
-
+<h2 id="heading-3">那些年我们趟过的坑</h2>
 <p>由于大多数同学是从 <code>php</code> 转型，所以第一件事就是大量的写了很多公共库。
 如：<code>string</code>,<code>table</code>,<code>time</code>,<code>file</code>等</p>
-
 <p>我艹为什么我从 <code>table</code> 取不到数据了，哦因为索引是 <code>int</code> 结果传入了一个 <code>string</code> 的数字啊。</p>
-
 <p>为什么 <code>json.encode</code> 报错啊，因为传入了一个松散结构的数据。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">cjson</span> <span class="o">=</span> <span class="n">require</span> <span class="s2">&#34;cjson&#34;</span>
-<span class="kd">local</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{[</span><span class="mi">10000</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,[</span><span class="mi">33333</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">}</span>
-<span class="n">ngx.say</span><span class="p">(</span><span class="n">cjson.encode</span><span class="p">(</span><span class="n">t</span><span class="p">))</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">cjson</span> <span class="o">=</span> <span class="n">require</span> <span class="s2">&#34;</span><span class="s2">cjson</span><span class="s2">&#34;</span>
+<span class="kd">local</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{</span><span class="p">[</span><span class="mi">10000</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="p">[</span><span class="mi">33333</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">}</span>
+<span class="n">ngx.say</span><span class="p">(</span><span class="n">cjson.encode</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>记得最搞笑的一次，当初用了一个第三方的 <code>mongodb</code> 的库，在存一个 <code>[int]=[int]</code> 的 <code>hash</code> 结构的时候。
+</div><p>记得最搞笑的一次，当初用了一个第三方的 <code>mongodb</code> 的库，在存一个 <code>[int]=[int]</code> 的 <code>hash</code> 结构的时候。
 假设索引是从1W开始的，他存储在 <code>mongodb</code> 里前面居然有 9999个 <code>nil</code>，你能想像当时我心里1W只艹尼码的心情么？
 后来不得以特意在获取数据的底层把所有的索引转为 <code>string</code> 捂脸。</p>
-
 <p>以至于到现在我都不敢轻易直视我们客户端同学的双眼。
 因为我无法再像 <code>php</code> 一样很方便 <code>json</code> 给他一个以数字当索引的 <code>object</code> 对象。臣妾真的做不到啊。</p>
-
-<h2 id="我们的使用场景">我们的使用场景</h2>
-
+<h2 id="heading-4">我们的使用场景</h2>
 <p>相比于社区内其他的同学大多奋斗在 <code>CDN</code> 事业上，而我们在 <code>游戏圈</code> 摸爬滚打。
 还是在2012年，当时新项目研发过半，我把 <code>OpenResty</code> 安利给我上家公司的领导。
 结果由于我们项目难产，公司解散再辗转到现在这家公司，已经是2015年。（创业是条不归路啊！）
 老领导所在的公司已经使用 <code>OpenResty</code> 成功上线3款产品了，真是汗颜。</p>
-
-<h2 id="待替换方案">待替换方案</h2>
-
+<h2 id="heading-5">待替换方案</h2>
 <p>游戏嘛少不了推送，之前也找了不找代替方案。目前在用的是老领导安利给我的 <code>nginx-push-stream-module</code>
 <a href="https://github.com/wandenberg/nginx-push-stream-module" title="nginx-push-stream-module">https://github.com/wandenberg/nginx-push-stream-module</a></p>
-
 <p>所以我无比期待 <code>nginx_stream_lua_module</code> 的发布到来，那个时候能玩的花样就更多了。</p>
 
     </div>
@@ -505,7 +477,7 @@
     &copy;
     
       2014 -
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span><span class="author">

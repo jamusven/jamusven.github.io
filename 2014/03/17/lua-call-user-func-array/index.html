@@ -34,7 +34,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.57.2" />
+<meta name="generator" content="Hugo 0.61.0" />
 
 
 <link rel="canonical" href="https://hambut.com/2014/03/17/lua-call-user-func-array/" />
@@ -65,16 +65,13 @@
 <meta property="article:modified_time" content="2014-03-17T14:23:01+00:00" />
 <meta itemprop="name" content="lua call_user_func_array">
 <meta itemprop="description" content="如何在lua里实现php的call_user_func_array调用 1 2 local args = {...} or {} method(unpack(args, 1, table.maxn(args)))">
-
-
 <meta itemprop="datePublished" content="2014-03-17T14:23:01&#43;00:00" />
 <meta itemprop="dateModified" content="2014-03-17T14:23:01&#43;00:00" />
 <meta itemprop="wordCount" content="46">
 
 
 
-<meta itemprop="keywords" content="lua,openresty," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="lua,openresty," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="lua call_user_func_array"/>
 <meta name="twitter:description" content="如何在lua里实现php的call_user_func_array调用 1 2 local args = {...} or {} method(unpack(args, 1, table.maxn(args)))"/>
 
@@ -311,7 +308,7 @@
 <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
-    
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
 
@@ -320,12 +317,13 @@
       <p>如何在lua里实现php的call_user_func_array调用</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">args</span> <span class="o">=</span> <span class="p">{...}</span> <span class="ow">or</span> <span class="p">{}</span>
-<span class="n">method</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">table.maxn</span><span class="p">(</span><span class="n">args</span><span class="p">)))</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="p">...</span><span class="p">}</span> <span class="ow">or</span> <span class="p">{</span><span class="p">}</span>
+<span class="n">method</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">table.maxn</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="p">)</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -432,7 +430,7 @@
     &copy;
     
       2014 -
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span><span class="author">

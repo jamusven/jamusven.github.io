@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 哈姆巴特</title>
@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 哈姆巴特</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 28 Aug 2019 11:53:28 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 23 Mar 2020 22:42:26 +0800</lastBuildDate>
     
 	<atom:link href="https://hambut.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>February 29</title>
+      <link>https://hambut.com/2020/03/23/february-29/</link>
+      <pubDate>Mon, 23 Mar 2020 22:42:26 +0800</pubDate>
+      
+      <guid>https://hambut.com/2020/03/23/february-29/</guid>
+      <description>这是一个对我很特殊的日子，我一直到现在还喜欢收集一些有这个数字的东西 比如：罐头类、手机号、卡号等等 电视剧《二月二十九》 无聊刷到有人安利这个剧</description>
+    </item>
     
     <item>
       <title>TI9 魂断上海</title>
@@ -89,7 +98,7 @@
       <pubDate>Tue, 22 Dec 2015 11:28:47 +0000</pubDate>
       
       <guid>https://hambut.com/2015/12/22/crontab-sendmail-postdrop-system-crash/</guid>
-      <description>事情的起因 同事告诉我我们线上一组游戏服进不去了，我查了一下错误日志，看到 Redis 服务报了以下错误 1 2 MISCONF Redis is configured to save RDB snapshots, but is currently not able to persist on disk. Commands that may modify the data</description>
+      <description>事情的起因 同事告诉我我们线上一组游戏服进不去了，我查了一下错误日志，看到 Redis 服务报了以下错误 MISCONF Redis is configured to save RDB snapshots, but is currently not able to persist on disk. Commands that may modify the data set are</description>
     </item>
     
     <item>
@@ -107,7 +116,7 @@
       <pubDate>Mon, 01 Apr 2013 12:29:39 +0000</pubDate>
       
       <guid>https://hambut.com/2013/04/01/php-mysql-pconnect/</guid>
-      <description>当 PHP 在 FastCGI 模式下运行时，如果需要使用 pconnect() 连接 MySQL 服务，那么最好设置 PHP FastCGI PHP_FCGI_CHILDREN &amp;lt;&amp;lt; MySQL max_connections，并且加大 php-fpm 的 pm.max_reques</description>
+      <description>当 PHP 在 FastCGI 模式下运行时，如果需要使用 pconnect() 连接 MySQL 服务，那么最好设置 PHP FastCGI PHP_FCGI_CHILDREN &amp;laquo; MySQL max_connections，并且加大 php-fpm 的 pm.max_reques</description>
     </item>
     
     <item>

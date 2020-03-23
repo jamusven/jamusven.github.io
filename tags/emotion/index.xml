@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>emotion on 哈姆巴特</title>
@@ -6,10 +6,19 @@
     <description>Recent content in emotion on 哈姆巴特</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 27 Mar 2019 23:11:21 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Mar 2020 22:42:26 +0800</lastBuildDate>
     
 	<atom:link href="https://hambut.com/tags/emotion/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>February 29</title>
+      <link>https://hambut.com/2020/03/23/february-29/</link>
+      <pubDate>Mon, 23 Mar 2020 22:42:26 +0800</pubDate>
+      
+      <guid>https://hambut.com/2020/03/23/february-29/</guid>
+      <description>这是一个对我很特殊的日子，我一直到现在还喜欢收集一些有这个数字的东西 比如：罐头类、手机号、卡号等等 电视剧《二月二十九》 无聊刷到有人安利这个剧</description>
+    </item>
     
     <item>
       <title>你要的全拿走，剩下的我承受，留下我们的狗</title>

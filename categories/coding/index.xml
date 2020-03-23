@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>coding on 哈姆巴特</title>
@@ -71,7 +71,7 @@
       <pubDate>Tue, 22 Dec 2015 11:28:47 +0000</pubDate>
       
       <guid>https://hambut.com/2015/12/22/crontab-sendmail-postdrop-system-crash/</guid>
-      <description>事情的起因 同事告诉我我们线上一组游戏服进不去了，我查了一下错误日志，看到 Redis 服务报了以下错误 1 2 MISCONF Redis is configured to save RDB snapshots, but is currently not able to persist on disk. Commands that may modify the data</description>
+      <description>事情的起因 同事告诉我我们线上一组游戏服进不去了，我查了一下错误日志，看到 Redis 服务报了以下错误 MISCONF Redis is configured to save RDB snapshots, but is currently not able to persist on disk. Commands that may modify the data set are</description>
     </item>
     
     <item>
@@ -89,7 +89,7 @@
       <pubDate>Mon, 01 Apr 2013 12:29:39 +0000</pubDate>
       
       <guid>https://hambut.com/2013/04/01/php-mysql-pconnect/</guid>
-      <description>当 PHP 在 FastCGI 模式下运行时，如果需要使用 pconnect() 连接 MySQL 服务，那么最好设置 PHP FastCGI PHP_FCGI_CHILDREN &amp;lt;&amp;lt; MySQL max_connections，并且加大 php-fpm 的 pm.max_reques</description>
+      <description>当 PHP 在 FastCGI 模式下运行时，如果需要使用 pconnect() 连接 MySQL 服务，那么最好设置 PHP FastCGI PHP_FCGI_CHILDREN &amp;laquo; MySQL max_connections，并且加大 php-fpm 的 pm.max_reques</description>
     </item>
     
     <item>

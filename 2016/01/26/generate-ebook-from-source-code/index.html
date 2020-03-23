@@ -34,7 +34,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.57.2" />
+<meta name="generator" content="Hugo 0.61.0" />
 
 
 <link rel="canonical" href="https://hambut.com/2016/01/26/generate-ebook-from-source-code/" />
@@ -65,16 +65,13 @@
 <meta property="article:modified_time" content="2016-01-26T10:33:57+00:00" />
 <meta itemprop="name" content="根据源代码生成电子书">
 <meta itemprop="description" content="##前言 最近想要提高自己的编码能力，所以想要找一些优质的项目来学习一下。 最近刚好海淘了最新的 kindle paperwhite 3 所以立马想到了春哥的 code2ebook 在 centos 遇到无数的坑，转">
-
-
 <meta itemprop="datePublished" content="2016-01-26T10:33:57&#43;00:00" />
 <meta itemprop="dateModified" content="2016-01-26T10:33:57&#43;00:00" />
 <meta itemprop="wordCount" content="551">
 
 
 
-<meta itemprop="keywords" content="kindle," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="kindle," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="根据源代码生成电子书"/>
 <meta name="twitter:description" content="##前言 最近想要提高自己的编码能力，所以想要找一些优质的项目来学习一下。 最近刚好海淘了最新的 kindle paperwhite 3 所以立马想到了春哥的 code2ebook 在 centos 遇到无数的坑，转"/>
 
@@ -312,73 +309,64 @@
   <h2 class="post-toc-title">Table of Contents</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#安装code2ebook的依赖">安装code2ebook的依赖</a></li>
-</ul></li>
-<li><a href="#根据源代码生成html源文件">根据源代码生成html源文件</a></li>
-<li><a href="#安装calibre">安装Calibre</a></li>
-<li><a href="#转换-html-源文件到-mobi-文件">转换 html 源文件到 mobi 文件</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#code2ebook">安装code2ebook的依赖</a></li>
+      </ul>
+    </li>
+    <li><a href="#html">根据源代码生成html源文件</a></li>
+    <li><a href="#calibre">安装Calibre</a></li>
+    <li><a href="#-html--mobi-">转换 html 源文件到 mobi 文件</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      
-
-<p>##前言
+      <p>##前言
 最近想要提高自己的编码能力，所以想要找一些优质的项目来学习一下。</p>
-
 <p>最近刚好海淘了最新的 <code>kindle paperwhite 3</code> 所以立马想到了春哥的 <a href="https://github.com/agentzh/code2ebook" title="code2ebook">code2ebook</a></p>
-
 <p>在 <code>centos</code> 遇到无数的坑，转到 <code>debian</code> 下顺的一B。</p>
-
-<!-- more -->
-
+<!-- raw HTML omitted -->
 <p>##准备工作
 ###下载code2ebook</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">hambut@debian:~$ git clone https://github.com/agentzh/code2ebook.git
 hambut@debian:~$ <span class="nb">cd</span> code2ebook
-hambut@debian:~$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:<span class="nv">$PATH</span></code></pre></td></tr></table>
+hambut@debian:~$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:<span class="nv">$PATH</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<h3 id="安装code2ebook的依赖">安装code2ebook的依赖</h3>
-
+</div><h3 id="code2ebook">安装code2ebook的依赖</h3>
 <p>我们需要安装 <code>vim</code>、<code>ctags</code>、<code>perl</code> 这三个依赖软件，以 <code>debian</code> 为例</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">hambut@debian:~$ sudo apt-get install vim ctags perl</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">hambut@debian:~$ sudo apt-get install vim ctags perl
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>###准备阅读的源代码</p>
+</div><p>###准备阅读的源代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">hambut@debian:~$ git clone https://github.com/idevz/vanilla.git</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">hambut@debian:~$ git clone https://github.com/idevz/vanilla.git
+</code></pre></td></tr></table>
 </div>
-</div>
-<h2 id="根据源代码生成html源文件">根据源代码生成html源文件</h2>
+</div><h2 id="html">根据源代码生成html源文件</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -403,27 +391,25 @@ Wrote html_out/vanilla/v/routes/index.html
 ...
 
 Wrote html_out/./index.html
-Finished, total file count: <span class="m">70</span></code></pre></td></tr></table>
+Finished, total file count: <span class="m">70</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>其实到这步已经可以很方便的通过浏览器等工具看有高亮模式的代码了</p>
-
+</div><p>其实到这步已经可以很方便的通过浏览器等工具看有高亮模式的代码了</p>
 <p>但是我们想要通过 <code>kindle</code> 看代码还需要转换成 <code>.mobi</code>、<code>.epub</code> 的格式
 这时我们需要另一个软件 <a href="http://calibre-ebook.com/" title="Calibre">Calibre</a></p>
-
-<h2 id="安装calibre">安装Calibre</h2>
+<h2 id="calibre">安装Calibre</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">hambut@debian:~$ sudo apt-get install calibre</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">hambut@debian:~$ sudo apt-get install calibre
+</code></pre></td></tr></table>
 </div>
-</div>
-<h2 id="转换-html-源文件到-mobi-文件">转换 html 源文件到 mobi 文件</h2>
+</div><h2 id="-html--mobi-">转换 html 源文件到 mobi 文件</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -466,7 +452,7 @@ Finished, total file count: <span class="m">70</span></code></pre></td></tr></ta
 <pre class="chroma"><code class="language-bash" data-lang="bash">hambut@debian:~/Documents/vanilla$ ebook-convert html_out/index.html vanilla-source-code.mobi <span class="se">\ </span>
 --output-profile kindle_dx --no-inline-toc  --title <span class="s2">&#34;vanilla source code&#34;</span> --publisher <span class="s1">&#39;hambut&#39;</span>
 
-<span class="m">1</span>% Converting input to HTML...
+1% Converting input to HTML...
 InputFormatPlugin: HTML Input running
 on /home/hambut/Documents/vanilla/html_out/index.html
 Language not specified
@@ -479,18 +465,18 @@ Forcing index1.html into XHTML namespace
 ...
 Forcing index36.html into XHTML namespace
 Forcing index37.html into XHTML namespace
-<span class="m">34</span>% Running transforms on ebook...
+34% Running transforms on ebook...
 Merging user specified metadata...
 Detecting structure...
 Maximum TOC links reached, stopping.
 Auto generated TOC with <span class="m">50</span> entries.
 Flattening CSS and remapping font sizes...
-Source base font size is <span class="m">12</span>.00000pt
+Source base font size is 12.00000pt
 Removing fake margins...
 Cleaning up manifest...
 Trimming unused files from manifest...
 Creating MOBI Output...
-<span class="m">67</span>% Running MOBI Output plugin
+67% Running MOBI Output plugin
 Serializing resources...
 Creating MOBI <span class="m">6</span> output
 Applying <span class="k">case</span>-transforming CSS...
@@ -500,10 +486,10 @@ Serializing markup content...
   Compressing markup content...
 Generating MOBI index <span class="k">for</span> a book
 MOBI output written to /home/hambut/Documents/vanilla/vanilla-source-code.mobi
-Output saved to   /home/hambut/Documents/vanilla/vanilla-source-code.mobi</code></pre></td></tr></table>
+Output saved to   /home/hambut/Documents/vanilla/vanilla-source-code.mobi
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>剩下来把生成好的 <code>vanilla-source-code.mobi</code> 发送到你的 <code>kindle</code> 就可以了。</p>
+</div><p>剩下来把生成好的 <code>vanilla-source-code.mobi</code> 发送到你的 <code>kindle</code> 就可以了。</p>
 
     </div>
 
@@ -608,7 +594,7 @@ Output saved to   /home/hambut/Documents/vanilla/vanilla-source-code.mobi</code>
     &copy;
     
       2014 -
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span><span class="author">
