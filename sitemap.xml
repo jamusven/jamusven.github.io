@@ -3,48 +3,62 @@
   
   <url>
     <loc>https://hambut.com/categories/</loc>
-    <lastmod>2020-03-23T22:42:26+08:00</lastmod>
+    <lastmod>2021-10-20T21:42:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/tags/emotion/</loc>
-    <lastmod>2020-03-23T22:42:26+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://hambut.com/2020/03/23/february-29/</loc>
-    <lastmod>2020-03-23T22:42:26+08:00</lastmod>
+    <lastmod>2021-10-20T21:42:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/categories/life/</loc>
-    <lastmod>2020-03-23T22:42:26+08:00</lastmod>
+    <lastmod>2021-10-20T21:42:40+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hambut.com/tags/lover/</loc>
+    <lastmod>2021-10-20T21:42:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/post/</loc>
-    <lastmod>2020-03-23T22:42:26+08:00</lastmod>
+    <lastmod>2021-10-20T21:42:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/tags/</loc>
-    <lastmod>2020-03-23T22:42:26+08:00</lastmod>
+    <lastmod>2021-10-20T21:42:40+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hambut.com/2021/10/20/goodbye-lover/</loc>
+    <lastmod>2021-10-20T21:42:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://hambut.com/</loc>
+    <lastmod>2021-10-20T21:42:40+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hambut.com/2020/03/23/february-29/</loc>
     <lastmod>2020-03-23T22:42:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
